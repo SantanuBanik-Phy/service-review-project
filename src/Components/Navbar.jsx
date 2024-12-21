@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import "./Navbar.css";
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const [displayName, setDisplayName] = useState(user?.displayName || "");
 
   useEffect(() => {
@@ -45,22 +45,23 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user && user?.email ? (
-                    <div className="flex items-center">
-
-                        <div className="dropdown dropdown-end">
-                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full tooltip tooltip-bottom" data-tip={displayName}>
-                                    <img src={user?.photoURL} alt="User Avatar" />
-                                </div>
-                            </label>
-                        </div>
-                        <button onClick={logOut} className="btn btn-sm btn-outline mr-2">Log Out</button>
+                 {/* User Profile or Login/Register */}
+          {user && user?.email ? (
+            <div  className="flex flex-col md:flex-row justify-center gap-1 items-center space-x-2 ">
+              <div className="tooltip tooltip-bottom" data-tip={displayName}>
+                <img
+                  referrerPolicy='no-referrer' 
+                  src={user?.photoURL}
+                  className="w-12 h-12 rounded-full cursor-pointer border-2 border-yellow-400"
+                  alt="User"
+                />
+              </div>
+                        <button onClick={logout} className="btn btn-sm btn-outline mr-2">Log Out</button>
                     </div>
                 ) : (
                     <div className="flex items-center">
-                        <NavLink to="/login" className="btn btn-sm btn-outline mr-2">Login</NavLink>
-                        <NavLink to="/register" className="btn btn-sm btn-outline">Register</NavLink>
+                        <Link to="/auth/login" className="btn btn-sm btn-outline mr-2">Login</Link>
+                        <Link to="/auth/register" className="btn btn-sm btn-outline">Register</Link>
                     </div>
                 )}
             </div>

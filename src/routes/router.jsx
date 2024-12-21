@@ -2,6 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import AuthLayout from "../layouts/AuthLayout";
 import Home from "../pages/Home";
+import Register from "../Components/Register";
+import Login from "../Components/Login";
+import AddService from "../pages/AddService";
+import ServiceDetails from "../pages/SerivceDetails";
 
 
 
@@ -24,19 +28,19 @@ const router = createBrowserRouter([
        
       },
       
-//     {
-//         path: '/add-service',
-//         element: <AddService></AddService>
-//     },
+    {
+        path: '/add-service',
+        element: <AddService></AddService>
+    },
 //     {
 //         path: '/services',
 //         element: <Services></Services>
 //     },
-//     {
-//         path: '/services/:id',
-//         element: <ServiceDetails></ServiceDetails>,
-//         // loader: ({ params }) => fetch(`http://localhost:5000/api/services/${params.id}`)
-//     },
+    {
+        path: '/services/:id',
+        element: <ServiceDetails></ServiceDetails>,
+        loader: ({ params }) => fetch(`http://localhost:3000/api/services/${params.id}`)
+    },
 //     {
 //         path: '/my-reviews',
 //         element: <MyReviews></MyReviews>
@@ -52,25 +56,25 @@ const router = createBrowserRouter([
    
     ],
   },
-  // {
-  //   path: "auth",
-  //   element: (
-  //     <>
+  {
+    path: "auth",
+    element: (
+      <>
      
-  //       <AuthLayout />
-  //     </>
-  //   ),
-  //   children: [
-  //     {
-  //       path: "/auth/login",
-  //       element: <Login />,
-  //     },
-  //     {
-  //       path: "/auth/register",
-  //       element: <Register />,
-  //     },
-  //   ],
-  // },
+        <AuthLayout />
+      </>
+    ),
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login />,
+      },
+      {
+        path: "/auth/register",
+        element: <Register />,
+      },
+    ],
+  },
   // {
   //   path: "*",
   //   element: <ErrorPage></ErrorPage>
