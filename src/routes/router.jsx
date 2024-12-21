@@ -19,12 +19,36 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-       
+        // loader: () => fetch('https://b10-a10-server-site.vercel.app/movies')
        
        
       },
       
-//     
+//     {
+//         path: '/add-service',
+//         element: <AddService></AddService>
+//     },
+//     {
+//         path: '/services',
+//         element: <Services></Services>
+//     },
+//     {
+//         path: '/services/:id',
+//         element: <ServiceDetails></ServiceDetails>,
+//         // loader: ({ params }) => fetch(`http://localhost:5000/api/services/${params.id}`)
+//     },
+//     {
+//         path: '/my-reviews',
+//         element: <MyReviews></MyReviews>
+//     },
+//     {
+//         path: '/my-services',
+//         element: <MyServices></MyServices>
+//     },
+// {
+//   path: "/about",
+//   element: <AboutUs></AboutUs>
+// }
    
     ],
   },
