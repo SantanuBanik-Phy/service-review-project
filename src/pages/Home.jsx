@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Banner from '../Components/Banner';
 import FeaturedServices from '../Components/FeaturedServices';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [services, setServices] = useState([]);
@@ -27,6 +28,15 @@ const Home = () => {
          <section className="w-11/12 mx-auto">
 
          <FeaturedServices services={services} loading={loading} />
+        
+        <div className="text-center mt-8">
+                <Link
+                  to="/services"
+                  className="btn font-semibold text-white bg-gradient-to-r from-[#19284a] to-[#619bca] rounded-xl"
+                >
+                  See All Services
+                </Link>
+              </div>
       </section>
      
       

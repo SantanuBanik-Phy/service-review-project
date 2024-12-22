@@ -26,6 +26,7 @@ const Navbar = () => {
                         <>
                             <li><NavLink to="/add-service">Add Service</NavLink></li>
                             <li><NavLink to="/my-reviews">My Reviews</NavLink></li>
+                            <li><NavLink to="/my-services">My Services</NavLink></li>
                         </>
                     ) : null}
                     </ul>
@@ -40,6 +41,7 @@ const Navbar = () => {
                         <>
                             <li><NavLink to="/add-service">Add Service</NavLink></li>
                             <li><NavLink to="/my-reviews">My Reviews</NavLink></li>
+                            <li><NavLink to="/my-services">My Services</NavLink></li>
                         </>
                     ) : null}
                 </ul>
