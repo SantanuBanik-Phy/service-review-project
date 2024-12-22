@@ -18,11 +18,9 @@ const useAxiosSecure = () => {
         return res
       },
       async error => {
-        console.log(
-          'error caught from our very own axios interceptor-->',
-          error.response
-        )
+       
         if (error.response.status === 401 || error.response.status === 403) {
+          toast.error("Session expired. Please log in again.");
           // logout
           logout()
           // navigate to login

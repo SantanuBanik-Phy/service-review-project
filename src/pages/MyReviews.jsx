@@ -5,9 +5,11 @@ import axios from 'axios';
 import useTitle from '../hook/userTitle.jsx';
 import ReviewCard from '../Components/ReviewCard';
 import { AuthContext } from '../provider/AuthProvider';
+import useAxiosSecure from '../hook/useAxiosSecure.jsx';
 
 const MyReviews = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
+    const { user, logout } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
 
     useTitle('My Reviews');
@@ -16,22 +18,18 @@ const MyReviews = () => {
     useEffect(() => {
         if (!user?.email) return;
 
-        axios
-            .get(`http://localhost:3000/api/reviews?email=${user?.email}`, {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('service-review-token')}`,
-                },
-            })
+        axiosSecure
+            .get(`/api/reviews?email=${user?.email}`)
             .then((response) => {
                 setReviews(response.data);
             })
             .catch((error) => {
                 console.error(error);
                 if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                    logOut();
+                    logout();
                 }
             });
-    }, [user?.email, logOut]);
+    }, [user?.email, logout]);
 
     // Delete review
     const handleDelete = (id) => {
@@ -45,12 +43,8 @@ const MyReviews = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                axios
-                    .delete(`http://localhost:3000/api/reviews/${id}`, {
-                        headers: {
-                            authorization: `Bearer ${localStorage.getItem('service-review-token')}`,
-                        },
-                    })
+                axiosSecure
+                    .delete(`/api/reviews/${id}`)
                     .then((response) => {
                         if (response.data.deletedCount > 0) {
                             Swal.fire('Deleted!', 'The review has been deleted.', 'success');
@@ -70,17 +64,13 @@ const MyReviews = () => {
     // Update review
     const handleUpdate = async (id, updatedText, updatedRating) => {
         try {
-            const response = await axios.patch(
-                `http://localhost:3000/api/reviews/${id}`,
+            const response = await axiosSecure.patch(
+                `/api/reviews/${id}`,
                 {
                     reviewText: updatedText,
                     rating: updatedRating,
                 },
-                {
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem('service-review-token')}`,
-                    },
-                }
+               
             );
 
             if (response.data.modifiedCount > 0) {
