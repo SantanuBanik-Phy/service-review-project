@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import "./Navbar.css";
+import logo  from "../assets/serviceReview.png";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -116,9 +117,9 @@ const Navbar = () => {
         </div>
         <Link
           to="/"
-          className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500"
+          className=" w-16 h-16 "
         >
-          Service Review
+          <img src={logo} className="w-full h-full rounded-full" alt="" />
         </Link>
       </div>
 
