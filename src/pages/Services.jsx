@@ -17,7 +17,7 @@ const Services = () => {
       try {
         setLoading(true); 
         const { data } = await axios.get(
-          `http://localhost:3000/api/allServices?filter=${filter}&search=${search}`
+          `https://b10-a11-server.vercel.app/api/allServices?filter=${filter}&search=${search}`
         );
         setServices(data); 
       } catch (error) {
@@ -90,7 +90,7 @@ const Services = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="flex p-1 overflow-hidden border rounded-lg shadow-md focus-within:ring focus-within:ring-opacity-40 focus-within:border-indigo-400 focus-within:ring-indigo-300 w-full md:w-auto">
+        <div className="flex p-1 justify-between overflow-hidden border rounded-lg shadow-md focus-within:ring focus-within:ring-opacity-40 focus-within:border-indigo-400 focus-within:ring-indigo-300 w-full md:w-auto">
           <input
             className="px-6 py-3 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
             type="text"

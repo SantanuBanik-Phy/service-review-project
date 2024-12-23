@@ -55,22 +55,22 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async currentUser => {
 
-            console.log(currentUser)
+           
           
           if (currentUser?.email) {
             setUser(currentUser)
             const { data } = await axios.post(
-              `http://localhost:3000/jwt`,
+              `https://b10-a11-server.vercel.app/jwt`,
               {
                 email: currentUser?.email,
               },
               { withCredentials: true }
             )
-            console.log(data)
+          
           } else {
             setUser(currentUser)
             const { data } = await axios.get(
-              `http://localhost:3000/logout`,
+              `https://b10-a11-server.vercel.app/logout`,
               { withCredentials: true }
             )
           }

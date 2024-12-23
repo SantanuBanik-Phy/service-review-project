@@ -24,7 +24,7 @@ const AddService = () => {
                 userEmail: user?.email
             };
 
-            await axios.post('http://localhost:3000/api/services', service);
+            await axios.post('https://b10-a11-server.vercel.app/api/services', service);
 
             Swal.fire({
                 position: 'center',

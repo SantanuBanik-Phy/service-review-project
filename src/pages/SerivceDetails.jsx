@@ -20,7 +20,7 @@ const ServiceDetails = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:3000/api/services/${id}`)
+        fetch(`https://b10-a11-server.vercel.app/api/services/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setService(data);
@@ -33,7 +33,7 @@ const ServiceDetails = () => {
     }, [id]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/reviews/service/${id}`)
+        fetch(`https://b10-a11-server.vercel.app/api/reviews/service/${id}`)
             .then((res) => res.json())
             .then((data) => setReviews(data))
             .catch((error) => console.error(error));
@@ -61,7 +61,7 @@ const ServiceDetails = () => {
             reviewDate: new Date().toISOString(),
         };
 
-        fetch('http://localhost:3000/api/reviews', {
+        fetch('https://b10-a11-server.vercel.app/api/reviews', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(review),

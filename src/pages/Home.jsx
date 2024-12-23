@@ -21,7 +21,7 @@ const Home = () => {
     const fetchServices = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/services?limit=6"
+          "https://b10-a11-server.vercel.app/services?limit=6"
         );
         setServices(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ const Home = () => {
     const fetchPlatformStats = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/platform-stats"
+          "https://b10-a11-server.vercel.app/api/platform-stats"
         );
         const usersCount =
           response.data.users === 1 && services.length === 0

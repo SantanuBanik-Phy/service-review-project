@@ -12,7 +12,7 @@ const ServiceCategories = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/categories?limit=6'); 
+                const response = await axios.get('https://b10-a11-server.vercel.app/api/categories?limit=6'); 
                 setCategories(response.data);
             } catch (error) {
                 console.error("Error fetching categories:", error);
