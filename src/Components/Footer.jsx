@@ -1,3 +1,5 @@
+import logo  from "../assets/serviceReview.png";
+
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
@@ -9,9 +11,9 @@ const Footer = () => {
                     {/* Company Information */}
                     <div className="space-y-6 text-center lg:text-left">
                         <img
-                            src=""
+                            src={logo}
                             alt="Company Logo"
-                            className="w-16 h-16 mx-auto lg:mx-0"
+                            className="w-16 h-16 rounded-full mx-auto lg:mx-0"
                         />
                         <h1 className="text-3xl font-bold text-yellow-400">
                             Service <span className="text-white">Review</span>

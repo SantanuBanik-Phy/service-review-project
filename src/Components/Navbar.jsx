@@ -219,7 +219,7 @@ const Navbar = () => {
             </div>
             <button
               onClick={logout}
-              className="btn btn-sm bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold shadow-md"
+              className="btn rounded-full bg-yellow-500 text-black font-bold shadow-md"
             >
               Log Out
             </button>
@@ -228,13 +228,13 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <Link
               to="/auth/login"
-              className="btn btn-sm bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-bold shadow-md"
+              className="btn rounded-full bg-white text-black  font-bold shadow-md"
             >
               Login
             </Link>
             <Link
               to="/auth/register"
-              className="btn btn-sm bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold shadow-md"
+              className="btn rounded-full bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold shadow-md"
             >
               Register
             </Link>

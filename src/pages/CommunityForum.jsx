@@ -2,20 +2,26 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import animationData from '../assets/lottie/lottie-animation.json'; 
+import Lottie from 'lottie-react';
+
 const faqs = [
     {
         question: 'How do I find a service provider in my area?',
-        answer: 'You can use our search filters to narrow down your search by location, category, and other criteria. You can also browse our featured providers section for top-rated professionals in your area.',
+        answer: 'Use the search filters to narrow down your search by location, category, ratings, and other criteria. Browse our featured providers for top-rated professionals in your area.',
     },
     {
         question: 'How do I leave a review for a service provider?',
-        answer: "After using a service, you can visit the provider's profile page and click on the 'Leave a Review' button. You'll be asked to provide a rating and write a short review about your experience.",
+        answer: "After using a service, visit the provider's profile page and click the 'Leave a Review' button. You'll rate the service and share a short review of your experience.",
     },
     {
-        question: 'What if I have a problem with a service provider?',
-        answer: 'You can contact the service provider directly through our platform or report the issue to our support team. We will do our best to help resolve the problem.',
+        question: 'What should I do if I have a problem with a service provider?',
+        answer: 'You can contact the service provider directly through our platform or report the issue to our support team. We aim to resolve problems as quickly as possible.',
     },
-    // Add more FAQs as needed
+    {
+        question: 'How can I trust the reviews I see?',
+        answer: 'All reviews are verified based on completed services, ensuring that feedback comes from real users who have experienced the service firsthand.',
+    },
 ];
 
 const CommunityForum = () => {
@@ -32,10 +38,23 @@ const CommunityForum = () => {
             transition={{ duration: 0.5 }}
             className="container mx-auto py-10"
         >
-            <h2 className="text-3xl font-bold text-center mb-6">Community Forum</h2>
-            <p className="text-center mb-8">
-                Connect with other users, discuss services, ask questions, share your experiences, and help each other find the best services.
+            <h2 className="text-4xl font-extrabold text-center mb-6 text-gradient bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+                Community Forum: Engage, Share, and Learn
+            </h2>
+            <p className="text-lg text-center mb-8 text-gray-600">
+                Connect with other users, share experiences, discuss services, and help one another find the best service providers.
             </p>
+
+            {/* Lottie Animation */}
+            <div className="flex justify-center mb-10">
+                <Lottie
+                    animationData={animationData} 
+                    loop={true}
+                    autoplay={true}
+                    height={200}
+                    width={200}
+                />
+            </div>
 
             {/* Forum Categories */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
@@ -49,16 +68,14 @@ const CommunityForum = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             whileHover={{ scale: 1.05 }}
                         >
-                            <Link to={`/community/${category}`} className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                                <div className="card-body text-center">
-                                    <h3 className="text-xl font-semibold">
-                                        {category.charAt(0).toUpperCase() + category.slice(1)}
-                                    </h3>
-                                    <p>
-                                        {category === 'general' && 'Discuss anything related to finding and reviewing services.'}
-                                        {category === 'recommendations' && 'Ask for or provide recommendations for specific services.'}
-                                        {category === 'issues' && 'Report problems with services or suggest improvements.'}
-                                        {category === 'tips' && 'Share tips and tricks for finding the best services and deals.'}
+                            <Link to={`/community/${category}`} className="card bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform rounded-lg">
+                                <div className="card-body text-center py-8 px-6">
+                                    <h3 className="text-2xl font-semibold text-indigo-600">{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
+                                    <p className="text-gray-600 mt-2">
+                                        {category === 'general' && 'Discuss anything related to finding and reviewing services in your area.'}
+                                        {category === 'recommendations' && 'Share or request recommendations for specific service providers.'}
+                                        {category === 'issues' && 'Report problems with services or suggest ways to improve them.'}
+                                        {category === 'tips' && 'Offer tips and insights for better service experiences or finding the best deals.'}
                                     </p>
                                 </div>
                             </Link>
@@ -68,7 +85,7 @@ const CommunityForum = () => {
             </div>
 
             {/* FAQs */}
-            <h3 className="text-2xl font-semibold text-center mb-4">Frequently Asked Questions</h3>
+            <h3 className="text-2xl font-semibold text-center mb-4 text-gray-800">Frequently Asked Questions</h3>
             <div className="space-y-4">
                 {faqs.map((faq, index) => (
                     <motion.div
@@ -76,14 +93,14 @@ const CommunityForum = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="card bg-base-100 shadow-xl rounded-box"
+                        className="card bg-white shadow-xl rounded-lg overflow-hidden"
                     >
                         <div
                             className="collapse collapse-arrow border border-base-300"
                             onClick={() => toggleFaq(index)}
                         >
                             <input type="radio" name="my-accordion-2" />
-                            <div className="collapse-title text-xl font-medium">
+                            <div className="collapse-title text-xl font-medium text-gray-700 hover:text-indigo-600 cursor-pointer">
                                 {faq.question}
                             </div>
                             {activeFaq === index && (
@@ -92,7 +109,7 @@ const CommunityForum = () => {
                                     animate={{ opacity: 1, height: 'auto' }}
                                     exit={{ opacity: 0, height: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className="collapse-content"
+                                    className="collapse-content text-gray-600"
                                 >
                                     <p>{faq.answer}</p>
                                 </motion.div>
