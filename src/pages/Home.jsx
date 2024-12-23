@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 import MeetOurPartners from "../Components/MeetOurPartners";
 import ServiceCategories from "../Components/ServiceCategories";
+import PricingPlans from "../Components/PricingPlans";
 
 
 const Home = () => {
@@ -159,6 +160,9 @@ const Home = () => {
       </section>
       <section className="w-11/12 mx-auto">
         <ServiceCategories></ServiceCategories>
+      </section>
+      <section className="w-11/12 mx-auto">
+       <PricingPlans></PricingPlans>
       </section>
      
     </div>

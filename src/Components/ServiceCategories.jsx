@@ -12,7 +12,7 @@ const ServiceCategories = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/categories?limit=6'); // Replace with your actual API endpoint
+                const response = await axios.get('http://localhost:3000/api/categories?limit=6'); 
                 setCategories(response.data);
             } catch (error) {
                 console.error("Error fetching categories:", error);

@@ -9,6 +9,7 @@ import ServiceDetails from "../pages/SerivceDetails";
 import MyReviews from "../pages/MyReviews";
 import Services from "../pages/Services";
 import MyServices from "../pages/Myservices";
+import CommunityForum from "../pages/CommunityForum";
 
 
 
@@ -52,10 +53,10 @@ const router = createBrowserRouter([
         path: '/my-services',
         element: <MyServices></MyServices>
     },
-// {
-//   path: "/about",
-//   element: <AboutUs></AboutUs>
-// }
+{
+  path: "/forum",
+  element: <CommunityForum></CommunityForum>
+}
    
     ],
   },
