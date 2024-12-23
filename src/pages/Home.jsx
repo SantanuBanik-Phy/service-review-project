@@ -136,16 +136,24 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Other Sections */}
-      <section className="w-11/12 mx-auto py-8">
+    
+     <div className="w-full mx-auto bg-cover bg-center "
+        style={{ backgroundImage: "url('https://i.ibb.co.com/5YxPff1/abstruct.png')" }}>
+     <section className="w-11/12 mx-auto">
         <MeetOurPartners />
       </section>
+     </div>
+     <div className="bg-gradient-to-r from-indigo-100 to-purple-50"></div>
       <section className="w-11/12 mx-auto py-8">
         <ServiceCategories />
       </section>
+      <div className="w-full mx-auto bg-cover bg-center "
+        style={{ backgroundImage: "url('https://i.ibb.co.com/vBNkmK7/rb-66456.png')" }}>
       <section className="w-11/12 mx-auto py-8">
         <PricingPlans />
       </section>
+      </div>
+      
     </div>
   );
 };

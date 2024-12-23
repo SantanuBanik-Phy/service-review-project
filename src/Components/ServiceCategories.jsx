@@ -63,7 +63,7 @@ const ServiceCategories = () => {
                                 <p className="mt-2 text-sm">{category.description}</p>
                                 <Link
                                     to={`/services?category=${category.name}`}
-                                    className="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-colors duration-300"
+                                    className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-600 text-white rounded-lg shadow hover:bg-blue-700 transition-colors duration-300"
                                 >
                                     Explore Services
                                 </Link>

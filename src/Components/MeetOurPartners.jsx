@@ -4,30 +4,30 @@ import { motion } from 'framer-motion';
 const MeetOurPartners = () => {
     const partners = [
         {
-            name: "Partner One",
-            description: "Leading provider of innovative tech solutions.",
-            logo: "https://placehold.co/120x120/png",
+            "name": "Google",
+            "description": "A leading provider of innovative tools and services for web development, empowering users to create and manage seamless service review systems.",
+            "logo": "https://i.ibb.co.com/SBbbWdb/32704485-m011t0447-b-social-sign-18sep22.jpg"
         },
         {
-            name: "Partner Two",
-            description: "Experts in sustainable energy solutions.",
-            logo: "https://placehold.co/120x120/png",
+            "name": "Microsoft",
+            "description": "Experts in providing cutting-edge technologies that power enterprise-level service review systems, ensuring scalability and reliability.",
+            "logo": "https://i.ibb.co.com/df1Str4/microsoft-logo-microsoft-icon-transparent-free-png.webp"
         },
         {
-            name: "Partner Three",
-            description: "Global leaders in financial services.",
-            logo: "https://placehold.co/120x120/png",
+            "name": "Amazon",
+            "description": "Global leaders in cloud computing, offering robust services for hosting service review systems with secure and efficient data management.",
+            "logo": "https://i.ibb.co.com/gmvjbBj/amazon-logo-700x394.jpg"
         },
         {
-            name: "Partner Four",
-            description: "Innovators in healthcare and wellness.",
-            logo: "https://placehold.co/120x120/png",
+            "name": "Salesforce",
+            "description": "Innovators in customer relationship management, providing solutions that help businesses gather valuable service feedback through integrated review systems.",
+            "logo": "https://i.ibb.co.com/0Bv9DTc/images.png"
         },
         {
-            name: "Partner Five",
-            description: "Pioneers in education technology.",
-            logo: "https://placehold.co/120x120/png",
-        },
+            "name": "IBM",
+            "description": "Pioneers in AI and machine learning, helping businesses leverage smart algorithms to analyze service reviews and improve customer satisfaction.",
+            "logo": "https://i.ibb.co.com/WfzmBS8/Featured-1-15.jpg"
+        }
     ];
 
     const cardVariants = {
@@ -46,10 +46,10 @@ const MeetOurPartners = () => {
     };
 
     return (
-        <div className="container mx-auto py-10 px-4">
+        <div className="container mx-auto py-16 px-4 ">
             {/* Heading Section */}
             <motion.h2
-                className="text-4xl font-extrabold text-center mb-6 text-gradient bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
+                className="text-5xl font-extrabold text-center mb-6 text-gradient bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -57,7 +57,7 @@ const MeetOurPartners = () => {
                 Meet Our Partners
             </motion.h2>
             <motion.p
-                className="text-lg text-center mb-12 text-gray-600"
+                className="text-xl text-center mb-12 text-gray-600 max-w-2xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -67,7 +67,7 @@ const MeetOurPartners = () => {
 
             {/* Partner Cards */}
             <motion.div
-                className="flex flex-wrap justify-center gap-6"
+                className="flex flex-wrap justify-center gap-8"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
@@ -75,25 +75,27 @@ const MeetOurPartners = () => {
                 {partners.map((partner, index) => (
                     <motion.div
                         key={index}
-                        className="card w-72 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transform transition-shadow duration-300"
+                        className="card w-72 bg-white shadow-xl rounded-lg overflow-hidden transform transition-shadow duration-300 hover:scale-105 hover:shadow-2xl"
                         variants={cardVariants}
                     >
                         <motion.figure
-                            className="px-8 pt-8"
+                            className="relative p-6"
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3 }}
                         >
                             <img
                                 src={partner.logo}
                                 alt={`${partner.name} Logo`}
-                                className="rounded-full border-2 border-gray-300"
+                                className="w-32 h-32 rounded-full mx-auto border-4 border-gray-100 shadow-lg transform transition-all duration-300"
                             />
+                            {/* Background Abstract Design */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-blue-300 opacity-30"></div>
                         </motion.figure>
                         <div className="card-body text-center p-6">
-                            <h3 className="card-title text-xl font-bold text-gray-800">
+                            <h3 className="card-title text-2xl font-bold text-gray-800 mb-2 hover:text-purple-600 transition-colors duration-300">
                                 {partner.name}
                             </h3>
-                            <p className="text-gray-600 mt-2">{partner.description}</p>
+                            <p className="text-gray-600 text-base">{partner.description}</p>
                         </div>
                     </motion.div>
                 ))}

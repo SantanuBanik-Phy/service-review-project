@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FeaturedServices = ({ services, loading }) => {
   return (
     <div className="container mx-auto py-10 px-4 lg:px-12">
-      {/* Header Section with Infinite Animation */}
+      
       <div className="text-center mb-10">
         <motion.h2
           className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500"
@@ -24,11 +24,11 @@ const FeaturedServices = ({ services, loading }) => {
         </motion.p>
       </div>
 
-      {/* Loading Spinner */}
+     
       {loading ? (
         <div className="flex justify-center">
           <div className="spinner-border" role="status">
-          <span className="loading loading-infinity loading-lg"></span>
+            <span className="loading loading-infinity loading-lg"></span>
           </div>
         </div>
       ) : (
@@ -36,35 +36,35 @@ const FeaturedServices = ({ services, loading }) => {
           {services.map((service) => (
             <motion.div
               key={service._id}
-              className="card group bg-gradient-to-br from-white to-gray-100 shadow-lg rounded-lg overflow-hidden relative hover:shadow-2xl hover:scale-105 transition-transform duration-300"
+              className="card group bg-white shadow-lg rounded-lg overflow-hidden relative hover:shadow-xl hover:scale-105 transition-transform duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {/* Image Section */}
+             
               <figure className="relative overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </figure>
 
-              {/* Card Content */}
+             
               <div className="card-body p-6">
-                <h3 className="card-title text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">
+                <h3 className="card-title text-xl font-semibold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 mt-2 group-hover:text-gray-800 transition-colors duration-300">
-                  {service.description.slice(0, 100)}...
+                  {service.description.length > 100 ? `${service.description.slice(0, 100)}...` : service.description}
                 </p>
-                <p className="mt-4 text-lg font-semibold text-indigo-600">
-                  Price: ${service.price}
+                <p className="mt-2 ">
+                  <span className="text-indigo-600 font-semibold">Price:</span> ${service.price}
                 </p>
-                <div className="card-actions mt-6 flex justify-end">
+                <div className="card-actions flex justify-end">
                   <Link
                     to={`/services/${service._id}`}
-                    className="btn bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-transform duration-300 transform hover:scale-105"
+                    className="btn bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold  px-4 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-transform duration-300 transform hover:scale-105"
                   >
                     See Details
                   </Link>
