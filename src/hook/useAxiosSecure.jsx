@@ -1,35 +1,35 @@
-import axios from 'axios'
+import axios from "axios";
 
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import useAuth from './useAuth'
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:3000',
-  withCredentials: true,
-})
+    baseURL: "http://localhost:3000",
+    withCredentials: true,
+});
 
 const useAxiosSecure = () => {
-  const navigate = useNavigate()
-  const { logout } = useAuth()
-  useEffect(() => {
-    axiosSecure.interceptors.response.use(
-      res => {
-        return res
-      },
-      async error => {
-       
-        if (error.response.status === 401 || error.response.status === 403) {
-          toast.error("Session expired. Please log in again.");
-          // logout
-          logout()
-          // navigate to login
-          navigate('/auth/login')
-        }
-      }
-    )
-  }, [logout, navigate])
-  return axiosSecure
-}
+    const navigate = useNavigate();
+    const { logout } = useAuth();
+    useEffect(() => {
+        axiosSecure.interceptors.response.use(
+            (res) => {
+                return res;
+            },
+            async (error) => {
+                const status = error.response?.status;
 
-export default useAxiosSecure
+                if (status === 401 || status === 403) {
+                    await logout(); 
+                    navigate("/auth/login"); 
+                }
+                return Promise.reject(error); 
+            }
+        );
+    }, [logout, navigate]);
+
+    return axiosSecure;
+};
+
+export default useAxiosSecure;

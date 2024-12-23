@@ -61,8 +61,8 @@ const MyServices = () => {
         }
 
         try {
-            const response = await axios.put(
-                `http://localhost:3000/api/services/${editService._id}`,
+            const response = await axiosSecure.put(
+                `/api/services/${editService._id}`,
                 { title, companyName, price, category, website }
             );
 
@@ -81,7 +81,7 @@ const MyServices = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/services/${id}`);
+            await axiosSecure.delete(`api/services/${id}`);
             toast.success("Service deleted successfully!");
             setServices((prevServices) =>
                 prevServices.filter((service) => service._id !== id)

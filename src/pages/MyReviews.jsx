@@ -18,16 +18,16 @@ const MyReviews = () => {
     useEffect(() => {
         if (!user?.email) return;
 
-        setLoading(true); // Start loading
+        setLoading(true); 
         axiosSecure
             .get(`/api/reviews?email=${user?.email}`)
             .then((response) => {
                 setReviews(response.data);
-                setLoading(false); // End loading
+                setLoading(false); 
             })
             .catch((error) => {
                 console.error(error);
-                setLoading(false); // End loading on error
+                setLoading(false); 
                 if (error.response && (error.response.status === 401 || error.response.status === 403)) {
                     logout();
                 }
