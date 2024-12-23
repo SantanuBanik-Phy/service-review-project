@@ -4,6 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosSecure from "../hook/useAxiosSecure";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const MyServices = () => {
     const axiosSecure = useAxiosSecure();
@@ -223,6 +224,9 @@ const MyServices = () => {
                     </div>
                 </div>
             )}
+             <Helmet>
+                <title>MyServices | Service Review</title>
+            </Helmet>
         </div>
     );
 };

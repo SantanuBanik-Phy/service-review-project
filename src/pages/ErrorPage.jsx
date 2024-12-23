@@ -7,7 +7,7 @@ const ErrorPage = () => {
     return (
         <div className="hero min-h-screen bg-gradient-to-br from-gray-200 via-white to-gray-300 flex flex-col items-center justify-center text-center">
             <Helmet>
-                <title>Error | Movie Portal</title>
+                <title>Error | Service Review</title>
             </Helmet>
 
             <div className="max-w-lg">

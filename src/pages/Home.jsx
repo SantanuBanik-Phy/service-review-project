@@ -7,6 +7,7 @@ import CountUp from "react-countup";
 import MeetOurPartners from "../Components/MeetOurPartners";
 import ServiceCategories from "../Components/ServiceCategories";
 import PricingPlans from "../Components/PricingPlans";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -153,7 +154,9 @@ const Home = () => {
         <PricingPlans />
       </section>
       </div>
-      
+      <Helmet>
+                <title>Home | Service Review</title>
+            </Helmet>
     </div>
   );
 };

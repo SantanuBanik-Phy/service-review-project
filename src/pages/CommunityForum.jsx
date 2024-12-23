@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import animationData from '../assets/lottie/lottie-animation.json'; 
 import Lottie from 'lottie-react';
+import { Helmet } from 'react-helmet';
 
 const faqs = [
     {
@@ -116,7 +117,11 @@ const CommunityForum = () => {
                             )}
                         </div>
                     </motion.div>
+                    
                 ))}
+                 <Helmet>
+                <title>CommunityForum | Service Review</title>
+            </Helmet>
             </div>
         </motion.div>
     );

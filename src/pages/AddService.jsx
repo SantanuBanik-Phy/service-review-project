@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../provider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const AddService = () => {
     const { user } = useContext(AuthContext);
@@ -177,6 +178,9 @@ const AddService = () => {
                     Add Service
                 </button>
             </form>
+            <Helmet>
+                <title>AddService | Service Review</title>
+            </Helmet>
         </div>
     );
 };
