@@ -15,7 +15,7 @@ const HomeLayout = () => {
           
       
      
-      <nav className=" ">
+      <nav className="">
         <Navbar></Navbar>
       </nav>
       

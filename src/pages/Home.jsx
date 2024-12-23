@@ -67,7 +67,7 @@ const Home = () => {
         <div className="text-center mt-8">
           <Link
             to="/services"
-            className="btn font-semibold text-white bg-gradient-to-r from-[#19284a] to-[#619bca] rounded-xl"
+            className="btn font-semibold text-white bg-gradient-to-r from-purple-500 to-blue-500  py-2 px-4 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-transform duration-300 transform hover:scale-105 "
           >
             See All Services
           </Link>
