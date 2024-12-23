@@ -5,6 +5,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 import MeetOurPartners from "../Components/MeetOurPartners";
+import ServiceCategories from "../Components/ServiceCategories";
+
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -151,9 +153,14 @@ const Home = () => {
         </div>
         </div>
     
-      <section className="w-11/12 mx-auto">
+     
+        <section className="w-11/12 mx-auto">
         <MeetOurPartners />
       </section>
+      <section className="w-11/12 mx-auto">
+        <ServiceCategories></ServiceCategories>
+      </section>
+     
     </div>
   );
 };
