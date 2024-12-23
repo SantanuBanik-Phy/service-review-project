@@ -10,6 +10,8 @@ import MyReviews from "../pages/MyReviews";
 import Services from "../pages/Services";
 import MyServices from "../pages/Myservices";
 import CommunityForum from "../pages/CommunityForum";
+import ErrorPage from "../pages/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -27,14 +29,13 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        // loader: () => fetch('https://b10-a10-server-site.vercel.app/movies')
-       
+      
        
       },
       
     {
         path: '/add-service',
-        element: <AddService></AddService>
+        element: <PrivateRoute><AddService></AddService></PrivateRoute> 
     },
     {
         path: '/services',
@@ -47,11 +48,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/my-reviews',
-        element: <MyReviews></MyReviews>
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute> 
     },
     {
         path: '/my-services',
-        element: <MyServices></MyServices>
+        element:<PrivateRoute><MyServices></MyServices></PrivateRoute> 
     },
 {
   path: "/forum",
@@ -79,10 +80,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "*",
-  //   element: <ErrorPage></ErrorPage>
-  // },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>
+  },
 ]);
 
 export default router;
