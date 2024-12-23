@@ -39,7 +39,7 @@ const ServiceCategories = () => {
             </p>
             {loading ? (
                 <div className="flex justify-center items-center h-64">
-                    <div className="loader"></div>
+                         <span className="loading loading-infinity loading-lg"></span>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">

@@ -53,13 +53,39 @@ const Services = () => {
             value={filter}
           >
             <option value="">Filter By Category</option>
-            <option value="Food">Food</option>
-            <option value="IT">IT</option>
-            <option value="Transport">Transport</option>
-            <option value="Health">Health</option>
-            <option value="Education">Education</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Finance">Finance</option>
+
+<option value="Food">Food</option>
+<option value="Transport">Transport</option>
+<option value="IT">IT</option>
+<option value="Health">Health</option>
+<option value="Education">Education</option>
+<option value="Entertainment">Entertainment</option>
+<option value="Finance">Finance</option>
+<option value="Real Estate">Real Estate</option>
+<option value="Hospitality">Hospitality</option>
+<option value="Travel">Travel</option>
+<option value="Fitness">Fitness</option>
+<option value="Beauty & Wellness">Beauty & Wellness</option>
+<option value="Retail">Retail</option>
+<option value="Legal">Legal</option>
+<option value="Home Services">Home Services</option>
+<option value="Automotive">Automotive</option>
+<option value="Technology">Technology</option>
+<option value="Logistics">Logistics</option>
+<option value="Media & Advertising">Media & Advertising</option>
+<option value="Agriculture">Agriculture</option>
+<option value="Construction">Construction</option>
+<option value="Energy & Utilities">Energy & Utilities</option>
+<option value="Public Services">Public Services</option>
+<option value="Non-Profit">Non-Profit</option>
+<option value="Telecommunications">Telecommunications</option>
+<option value="Sports & Recreation">Sports & Recreation</option>
+<option value="Insurance">Insurance</option>
+<option value="E-commerce">E-commerce</option>
+<option value="Event Management">Event Management</option>
+<option value="Pet Care">Pet Care</option>
+<option value="Luxury Services">Luxury Services</option>
+
           </select>
         </div>
 
@@ -90,15 +116,15 @@ const Services = () => {
         </button>
       </div>
 
-      <h2 className="text-4xl text-center font-semibold mb-10">
+      <h2 className="text-4xl text-center font-bold text-indigo-700 mb-10">
         Our Services ({services.length})
       </h2>
 
       {loading ? (
         <div className="flex justify-center">
-          <div className="spinner-border animate-spin border-t-4 border-blue-500 border-solid rounded-full w-8 h-8" role="status">
+           <span className="loading loading-infinity loading-lg"></span>
 
-          </div>
+         
         </div>
       ) : services.length === 0 ? (
         <p className="text-center text-xl">No services found.</p>

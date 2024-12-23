@@ -85,7 +85,7 @@ const ServiceDetails = () => {
 
             {loading ? (
                 <div className="text-center py-20">
-                    <p>Loading service details...</p>
+                           <span className="loading loading-infinity loading-lg"></span>
                 </div>
             ) : (
                 <>

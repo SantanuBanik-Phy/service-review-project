@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
-import axios from 'axios';
 import useTitle from '../hook/userTitle.jsx';
 import ReviewCard from '../Components/ReviewCard';
 import { AuthContext } from '../provider/AuthProvider';
@@ -11,6 +10,7 @@ const MyReviews = () => {
     const axiosSecure = useAxiosSecure();
     const { user, logout } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useTitle('My Reviews');
 
@@ -18,18 +18,21 @@ const MyReviews = () => {
     useEffect(() => {
         if (!user?.email) return;
 
+        setLoading(true); // Start loading
         axiosSecure
             .get(`/api/reviews?email=${user?.email}`)
             .then((response) => {
                 setReviews(response.data);
+                setLoading(false); // End loading
             })
             .catch((error) => {
                 console.error(error);
+                setLoading(false); // End loading on error
                 if (error.response && (error.response.status === 401 || error.response.status === 403)) {
                     logout();
                 }
             });
-    }, [user?.email, logout]);
+    }, [user?.email, logout, axiosSecure]);
 
     // Delete review
     const handleDelete = (id) => {
@@ -64,14 +67,10 @@ const MyReviews = () => {
     // Update review
     const handleUpdate = async (id, updatedText, updatedRating) => {
         try {
-            const response = await axiosSecure.patch(
-                `/api/reviews/${id}`,
-                {
-                    reviewText: updatedText,
-                    rating: updatedRating,
-                },
-               
-            );
+            const response = await axiosSecure.patch(`/api/reviews/${id}`, {
+                reviewText: updatedText,
+                rating: updatedRating,
+            });
 
             if (response.data.modifiedCount > 0) {
                 setReviews((prevReviews) =>
@@ -94,10 +93,14 @@ const MyReviews = () => {
             <Helmet>
                 <title>My Reviews - Service Review</title>
             </Helmet>
-            <h2 className="text-4xl text-center font-semibold mb-10">
+            <h2 className="text-4xl font-bold text-center text-indigo-700  mb-10">
                 My Reviews ({reviews.length})
             </h2>
-            {reviews.length > 0 ? (
+            {loading ? (
+                <div className="flex justify-center">
+                     <span className="loading loading-infinity loading-lg"></span>
+                </div>
+            ) : reviews.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {reviews.map((review) => (
                         <ReviewCard
