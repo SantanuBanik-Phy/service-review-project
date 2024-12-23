@@ -15,16 +15,16 @@ const Services = () => {
   useEffect(() => {
     const fetchAllServices = async () => {
       try {
-        setLoading(true); // Start loading
+        setLoading(true); 
         const { data } = await axios.get(
           `http://localhost:3000/api/allServices?filter=${filter}&search=${search}`
         );
-        setServices(data); // Set services after data is fetched
+        setServices(data); 
       } catch (error) {
         console.error("Error fetching services:", error);
-        setServices([]); // In case of an error, set an empty array
+        setServices([]); 
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false); 
       }
     };
 
@@ -39,14 +39,16 @@ const Services = () => {
   return (
     <div className="py-10 container mx-auto">
       <Helmet>
-        <title>Services - Service Review</title>
+        <title>Services - All Services</title>
       </Helmet>
+  
       <div className="flex flex-col md:flex-row justify-center items-center gap-5 mb-10">
+        {/* Category Filter */}
         <div>
           <select
             name="category"
             id="category"
-            className="border p-4 rounded-lg"
+            className="border p-4 rounded-lg shadow-md w-full md:w-auto focus:ring-2 focus:ring-indigo-500 transition-all duration-300"
             onChange={(e) => setFilter(e.target.value)}
             value={filter}
           >
@@ -54,29 +56,36 @@ const Services = () => {
             <option value="Food">Food</option>
             <option value="IT">IT</option>
             <option value="Transport">Transport</option>
+            <option value="Health">Health</option>
+            <option value="Education">Education</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Finance">Finance</option>
           </select>
         </div>
 
-        <div className="flex p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
+        {/* Search Bar */}
+        <div className="flex p-1 overflow-hidden border rounded-lg shadow-md focus-within:ring focus-within:ring-opacity-40 focus-within:border-indigo-400 focus-within:ring-indigo-300 w-full md:w-auto">
           <input
-            className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
+            className="px-6 py-3 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
             type="text"
             name="search"
             onChange={(e) => setSearch(e.target.value)}
             value={search}
-            placeholder="Enter Service Title"
+            placeholder="Search for a Service"
             aria-label="Enter Service Title"
           />
-
           <button
-            className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none"
-
+            className="px-6 py-3 text-sm font-medium tracking-wider text-white uppercase transition-colors duration-300 transform bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-600 rounded-md hover:bg-gradient-to-l focus:outline-none"
           >
             Search
           </button>
         </div>
 
-        <button onClick={handleReset} className="btn bg-gray-500 hover:bg-gray-400 text-white">
+        {/* Reset Button */}
+        <button 
+          onClick={handleReset} 
+          className="bg-gradient-to-r from-gray-500 to-gray-400 text-white py-3 px-6 rounded-md hover:bg-gradient-to-l transition-all duration-300 shadow-lg"
+        >
           Reset
         </button>
       </div>
@@ -88,7 +97,7 @@ const Services = () => {
       {loading ? (
         <div className="flex justify-center">
           <div className="spinner-border animate-spin border-t-4 border-blue-500 border-solid rounded-full w-8 h-8" role="status">
-            <span className="visually-hidden">Loading...</span>
+
           </div>
         </div>
       ) : services.length === 0 ? (

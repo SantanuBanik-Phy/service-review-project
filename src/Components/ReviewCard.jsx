@@ -33,34 +33,34 @@ const ReviewCard = ({ review, handleDelete, handleUpdate, showActions }) => {
 
     return (
         <>
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <div className="card-body">
+            <div className="card w-96 bg-white shadow-lg rounded-lg overflow-hidden">
+                <div className="card-body p-6">
                     <div className="flex items-center gap-5">
                         <div className="avatar">
-                            <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src={reviewerPhoto} alt="Reviewer Avatar" />
+                            <div className="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+                                <img src={reviewerPhoto} alt="Reviewer Avatar" className="object-cover w-full h-full" />
                             </div>
                         </div>
                         <div>
-                            <h4 className="font-semibold text-xl">{reviewerName}</h4>
-                            <p className="font-semibold">{serviceName}</p>
+                            <h4 className="font-semibold text-xl text-gray-800">{reviewerName}</h4>
+                            <p className="font-semibold text-gray-500">{serviceName}</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-2 mt-3">
-                        <p className="font-semibold">Rating:</p>
+                        <p className="font-semibold text-gray-700">Rating:</p>
                         <div className="rating">
                             {Array.from({ length: parseInt(rating) }, (_, i) => (
                                 <FaStar key={i} className="text-yellow-400" />
                             ))}
                         </div>
                     </div>
-                    <p>{reviewText}</p>
-                    <div className="card-actions justify-end mt-3">
-                        <p className="font-semibold">{new Date(reviewDate).toLocaleDateString()}</p>
+                    <p className="text-gray-600 mt-2">{reviewText}</p>
+                    <div className="flex justify-between items-center mt-3">
+                        <p className="font-semibold text-gray-400">{new Date(reviewDate).toLocaleDateString()}</p>
                         {showActions && (
                             <div className="flex gap-2">
                                 <button onClick={() => setModalOpen(true)} className="btn btn-ghost btn-sm">
-                                    <FaEdit className="text-xl" />
+                                    <FaEdit className="text-xl text-blue-500" />
                                 </button>
                                 <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-sm">
                                     <FaTrashAlt className="text-red-600 text-xl" />
@@ -72,9 +72,9 @@ const ReviewCard = ({ review, handleDelete, handleUpdate, showActions }) => {
             </div>
 
             {modalOpen && (
-                <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-                        <h2 className="text-2xl font-semibold mb-4">Update Review</h2>
+                <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Update Review</h2>
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
@@ -83,29 +83,29 @@ const ReviewCard = ({ review, handleDelete, handleUpdate, showActions }) => {
                             className="space-y-4"
                         >
                             <textarea
-                                className="textarea textarea-bordered w-full"
+                                className="textarea textarea-bordered w-full h-32 p-4 text-lg text-gray-700"
                                 value={updatedReviewText}
                                 onChange={(e) => setUpdatedReviewText(e.target.value)}
                                 placeholder="Update your review text here"
                                 required
                             />
                             <div className="flex flex-col items-center">
-                                <label className="font-medium mb-2">Update Rating:</label>
+                                <label className="font-medium mb-2 text-gray-700">Update Rating:</label>
                                 <Rating
                                     value={updatedRating}
                                     onChange={setUpdatedRating}
                                     style={{ maxWidth: '200px' }}
                                 />
                             </div>
-                            <div className="flex justify-end space-x-4">
+                            <div className="flex justify-end space-x-4 mt-4">
                                 <button
                                     type="button"
-                                    className="btn btn-secondary"
+                                    className="btn"
                                     onClick={() => setModalOpen(false)}
                                 >
                                     Cancel
                                 </button>
-                                <button type="submit" className="btn btn-primary">
+                                <button type="submit" className="btn bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-600 text-white ">
                                     Update
                                 </button>
                             </div>
@@ -116,7 +116,5 @@ const ReviewCard = ({ review, handleDelete, handleUpdate, showActions }) => {
         </>
     );
 };
-
-
 
 export default ReviewCard;
