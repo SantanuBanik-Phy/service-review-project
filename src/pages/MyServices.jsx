@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+
 import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosSecure from "../hook/useAxiosSecure";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
+
 
 const MyServices = () => {
     const axiosSecure = useAxiosSecure();
@@ -18,7 +19,7 @@ const MyServices = () => {
         if (user?.email) {
             setLoading(true);
             axiosSecure
-                .get(`/api/services?email=${user.email}`)
+                .get(`/api/services/${user.email}`)
                 .then((response) => {
                     setServices(response.data);
                     setLoading(false);
@@ -38,7 +39,7 @@ const MyServices = () => {
     const fetchServices = async () => {
         setLoading(true);
         try {
-            const response = await axiosSecure.get(`/api/services?email=${user.email}`);
+            const response = await axiosSecure.get(`/api/services/${user.email}`);
             setServices(response.data);
             setLoading(false);
         } catch (error) {

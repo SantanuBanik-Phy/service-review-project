@@ -4,11 +4,13 @@ import Swal from 'sweetalert2';
 import useTitle from '../hook/userTitle.jsx';
 import ReviewCard from '../Components/ReviewCard';
 import { AuthContext } from '../provider/AuthProvider';
+
+import { toast } from 'react-toastify';
 import useAxiosSecure from '../hook/useAxiosSecure.jsx';
 
 const MyReviews = () => {
     const axiosSecure = useAxiosSecure();
-    const { user, logout } = useContext(AuthContext);
+    const { user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -20,19 +22,18 @@ const MyReviews = () => {
 
         setLoading(true); 
         axiosSecure
-            .get(`/api/reviews?email=${user?.email}`)
+            .get(`/api/reviews/${user.email}`)
             .then((response) => {
                 setReviews(response.data);
                 setLoading(false); 
             })
             .catch((error) => {
-                console.error(error);
+                const message = error.response?.data?.message || "Failed to fetch reviews.";
+                toast.error(message);
                 setLoading(false); 
-                if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                    logout();
-                }
+              
             });
-    }, [user?.email, logout, axiosSecure]);
+    }, [user?.email, axiosSecure]);
 
     // Delete review
     const handleDelete = (id) => {

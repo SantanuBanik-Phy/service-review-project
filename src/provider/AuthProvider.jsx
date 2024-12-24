@@ -29,11 +29,23 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider);
     };
 
-    const logout = () => {
-        setLoading(true);
-        return signOut(auth);
-    };
-
+    const logout = async () => {
+      setLoading(true);
+      try {
+          await signOut(auth); // Sign out from Firebase
+          await axios.post(
+              'https://b10-a11-server.vercel.app/logout',
+              {},
+              { withCredentials: true } // Ensure cookies are cleared
+          );
+          setUser(null); // Clear the user state
+      } catch (error) {
+          console.error("Error during logout:", error);
+      } finally {
+          setLoading(false);
+      }
+  };
+  
     const updateUserProfile = async (updatedData) => {
         try {
             await updateProfile(auth.currentUser, updatedData);
@@ -53,33 +65,48 @@ const AuthProvider = ({ children }) => {
     };
    
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async currentUser => {
-
-           
-          
+      const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+          setLoading(true); 
+  
           if (currentUser?.email) {
-            setUser(currentUser)
-            const { data } = await axios.post(
-              `https://b10-a11-server.vercel.app/jwt`,
-              {
-                email: currentUser?.email,
-              },
-              { withCredentials: true }
-            )
-          
+              try {
+               
+                  const user = { email: currentUser.email };
+                  await axios.post(
+                      'https://b10-a11-server.vercel.app/jwt',
+                      user,
+                      { withCredentials: true }
+                  );
+                  console.log("JWT generated successfully");
+                  setUser(currentUser); 
+              } catch (error) {
+                  console.error("Error generating JWT:", error);
+                  setUser(null); 
+              }
           } else {
-            setUser(currentUser)
-            const { data } = await axios.get(
-              `https://b10-a11-server.vercel.app/logout`,
-              { withCredentials: true }
-            )
+              try {
+                 
+                  await axios.post(
+                      'https://b10-a11-server.vercel.app/logout',
+                      {},
+                      { withCredentials: true }
+                  );
+                 
+              } catch (error) {
+                  console.error("Error during logout:", error);
+              } finally {
+                  setUser(null);
+              }
           }
-          setLoading(false)
-        })
-        return () => {
-          return unsubscribe()
-        }
-      }, [])
+  
+          setLoading(false); 
+      });
+  
+      return () => {
+          unsubscribe(); 
+      };
+  }, []);
+  
       
 
     const authInfo = {

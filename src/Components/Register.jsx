@@ -12,31 +12,48 @@ const Register = () => {
   const { createUser, googleSignIn, setUser, updateUserProfile } =
     useContext(AuthContext);
   const navigate = useNavigate();
-  const [passwordError, setPasswordError] = useState("");
-  const [emailError, setEmailError] = useState("");
 
   const handleRegister = async (event) => {
     event.preventDefault();
 
     const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const photo = form.photo.value;
-    const password = form.password.value;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const photo = form.photo.value.trim();
+    const password = form.password.value.trim();
+
+    // Name validation
+    if (!name) {
+      toast.error("Name is required.");
+      return;
+    }
+
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please provide a valid email address.");
+      return;
+    }
+
+    // Photo URL validation
+    const urlRegex = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
+    if (!urlRegex.test(photo)) {
+      toast.error("Please provide a valid photo URL starting with http:// or https://");
+      return;
+    }
 
     // Password validation
     if (!/(?=.*[A-Z])/.test(password)) {
-      setPasswordError("Password must contain at least one uppercase letter.");
-      return;
-    } else if (!/(?=.*[a-z])/.test(password)) {
-      setPasswordError("Password must contain at least one lowercase letter.");
-      return;
-    } else if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long.");
+      toast.error("Password must contain at least one uppercase letter.");
       return;
     }
-    setPasswordError("");
-    setEmailError("");
+    if (!/(?=.*[a-z])/.test(password)) {
+      toast.error("Password must contain at least one lowercase letter.");
+      return;
+    }
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long.");
+      return;
+    }
 
     try {
       const result = await createUser(email, password);
@@ -50,10 +67,8 @@ const Register = () => {
 
       // Firebase error handling
       if (error.code === "auth/email-already-in-use") {
-        setEmailError("This email is already in use.");
         toast.error("This email is already in use.");
       } else if (error.code === "auth/invalid-email") {
-        setEmailError("Invalid email address.");
         toast.error("Invalid email address.");
       } else {
         toast.error(`Registration failed: ${error.message}`);
@@ -82,8 +97,6 @@ const Register = () => {
       </Helmet>
 
       <div className="flex my-10 gap-8 flex-col lg:flex-row justify-between items-center w-full max-w-6xl px-6">
-       
-
         {/* Registration Form Section */}
         <div className="w-full lg:w-1/2 bg-white rounded-3xl shadow-2xl p-10">
           <h1 className="text-5xl font-extrabold text-gray-800 text-center mb-6">
@@ -120,9 +133,6 @@ const Register = () => {
                 className="input input-bordered w-full border-gray-300 focus:ring-2 focus:ring-purple-500 rounded-xl p-4"
                 required
               />
-              {emailError && (
-                <p className="text-red-600 text-sm mt-2">{emailError}</p>
-              )}
             </div>
 
             {/* Photo URL Input */}
@@ -155,9 +165,6 @@ const Register = () => {
                 className="input input-bordered w-full border-gray-300 focus:ring-2 focus:ring-purple-500 rounded-xl p-4"
                 required
               />
-              {passwordError && (
-                <p className="text-red-600 text-sm mt-2">{passwordError}</p>
-              )}
             </div>
 
             {/* Submit Button */}
@@ -194,8 +201,8 @@ const Register = () => {
             </p>
           </div>
         </div>
-         {/* Lottie Animation Section */}
-         <div className="w-full lg:w-1/2 flex justify-center mb-10 lg:mb-0">
+        {/* Lottie Animation Section */}
+        <div className="w-full lg:w-1/2 flex justify-center mb-10 lg:mb-0">
           <Lottie
             animationData={registerAnimation}
             loop={true}
