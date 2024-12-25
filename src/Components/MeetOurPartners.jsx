@@ -47,7 +47,7 @@ const MeetOurPartners = () => {
 
     return (
         <div className="container mx-auto py-16 px-4 ">
-            {/* Heading Section */}
+      
             <motion.h2
                 className="text-5xl font-extrabold text-center mb-6 text-gradient bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
                 initial={{ opacity: 0, y: -20 }}
@@ -65,7 +65,7 @@ const MeetOurPartners = () => {
                 We collaborate with some of the best organizations around the globe. Explore their contributions and innovations!
             </motion.p>
 
-            {/* Partner Cards */}
+         
             <motion.div
                 className="flex flex-wrap justify-center gap-8"
                 variants={containerVariants}
@@ -88,7 +88,7 @@ const MeetOurPartners = () => {
                                 alt={`${partner.name} Logo`}
                                 className="w-32 h-32 rounded-full mx-auto border-4 border-gray-100 shadow-lg transform transition-all duration-300"
                             />
-                            {/* Background Abstract Design */}
+                          
                             <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-blue-300 opacity-30"></div>
                         </motion.figure>
                         <div className="card-body text-center p-6">

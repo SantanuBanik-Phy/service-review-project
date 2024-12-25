@@ -12,11 +12,12 @@ const ServiceCard = ({ service }) => {
         <PhotoView src={image}>
           <figure className="relative overflow-hidden rounded-t-xl">
             <img
+              referrerPolicy="no-referrer"
               src={image}
               alt={title}
               className="w-full h-64 object-cover rounded-t-xl transform transition-all duration-300 hover:opacity-90"
             />
-            {/* Category Overlay */}
+           
             <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-lg uppercase tracking-wide">
               {category}
             </div>

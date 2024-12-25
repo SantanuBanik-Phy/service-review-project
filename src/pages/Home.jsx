@@ -22,7 +22,7 @@ const Home = () => {
     const fetchServices = async () => {
       try {
         const response = await axios.get(
-          "https://b10-a11-server.vercel.app/services?limit=6"
+          "https://b10-a11-server.vercel.app/api/services?limit=6"
         );
         setServices(response.data);
       } catch (error) {

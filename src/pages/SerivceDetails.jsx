@@ -20,7 +20,7 @@ const ServiceDetails = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://b10-a11-server.vercel.app/api/services/${id}`)
+        fetch(`https://b10-a11-server.vercel.app/services/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setService(data);

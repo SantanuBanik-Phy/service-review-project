@@ -57,7 +57,7 @@ const Login = () => {
       <div className="flex flex-col lg:flex-row justify-between items-center w-full mt-10 max-w-6xl px-6">
        
 
-        {/* Login Form Section */}
+       
         <div className="w-full lg:w-1/2 bg-white rounded-3xl shadow-2xl p-10">
           <h1 className="text-5xl font-extrabold text-gray-800 text-center mb-6">Welcome Back!</h1>
           <p className="text-gray-600 text-center mb-8 text-lg">
@@ -65,7 +65,7 @@ const Login = () => {
           </p>
 
           <form onSubmit={handleLogin}>
-            {/* Email Input */}
+           
             <div className="form-control mb-6">
               <label className="label">
                 <span className="label-text font-medium text-gray-700">Email</span>
@@ -80,7 +80,7 @@ const Login = () => {
               />
             </div>
 
-            {/* Password Input */}
+          
             <div className="form-control mb-4">
               <label className="label">
                 <span className="label-text font-medium text-gray-700">Password</span>
@@ -108,7 +108,7 @@ const Login = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
+         
             <div className="form-control">
               <button
                 type="submit"
@@ -121,7 +121,7 @@ const Login = () => {
 
           <div className="divider my-6">OR</div>
 
-          {/* Google Sign-In Button */}
+         
           <button
             onClick={handleGoogleSignIn}
             className="btn btn-outline w-full flex justify-center items-center space-x-3 border-gray-300 hover:bg-gray-100 py-3 rounded-xl"

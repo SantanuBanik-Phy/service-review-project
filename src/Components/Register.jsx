@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
 import Lottie from "lottie-react";
-import registerAnimation from "../assets/lottie/register-animation.json"; // Replace with your Lottie file path
+import registerAnimation from "../assets/lottie/register-animation.json"; 
 
 const Register = () => {
   const { createUser, googleSignIn, setUser, updateUserProfile } =
@@ -97,7 +97,7 @@ const Register = () => {
       </Helmet>
 
       <div className="flex my-10 gap-8 flex-col lg:flex-row justify-between items-center w-full max-w-6xl px-6">
-        {/* Registration Form Section */}
+      
         <div className="w-full lg:w-1/2 bg-white rounded-3xl shadow-2xl p-10">
           <h1 className="text-5xl font-extrabold text-gray-800 text-center mb-6">
             Join Us Today!
@@ -107,7 +107,7 @@ const Register = () => {
           </p>
 
           <form onSubmit={handleRegister}>
-            {/* Name Input */}
+         
             <div className="form-control mb-6">
               <label className="label">
                 <span className="label-text font-medium text-gray-700">Name</span>
@@ -121,7 +121,7 @@ const Register = () => {
               />
             </div>
 
-            {/* Email Input */}
+         
             <div className="form-control mb-6">
               <label className="label">
                 <span className="label-text font-medium text-gray-700">Email</span>
@@ -135,7 +135,7 @@ const Register = () => {
               />
             </div>
 
-            {/* Photo URL Input */}
+          
             <div className="form-control mb-6">
               <label className="label">
                 <span className="label-text font-medium text-gray-700">
@@ -151,7 +151,7 @@ const Register = () => {
               />
             </div>
 
-            {/* Password Input */}
+         
             <div className="form-control mb-4">
               <label className="label">
                 <span className="label-text font-medium text-gray-700">
@@ -167,7 +167,7 @@ const Register = () => {
               />
             </div>
 
-            {/* Submit Button */}
+           
             <div className="form-control">
               <button
                 type="submit"
@@ -180,7 +180,7 @@ const Register = () => {
 
           <div className="divider my-6">OR</div>
 
-          {/* Google Sign-In Button */}
+         
           <button
             onClick={handleGoogleSignIn}
             className="btn btn-outline w-full flex justify-center items-center space-x-3 border-gray-300 hover:bg-gray-100 py-3 rounded-xl"
@@ -201,7 +201,7 @@ const Register = () => {
             </p>
           </div>
         </div>
-        {/* Lottie Animation Section */}
+      
         <div className="w-full lg:w-1/2 flex justify-center mb-10 lg:mb-0">
           <Lottie
             animationData={registerAnimation}
