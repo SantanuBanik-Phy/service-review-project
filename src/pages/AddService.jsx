@@ -110,46 +110,50 @@ const AddService = () => {
                 </div>
 
                 <div className="form-control">
-                    <label className="label text-lg font-medium">Category</label>
-                    <select 
-                        {...register("category", { required: "Category is required" })}
-                        className="select select-bordered w-full rounded-lg px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-white">
-                       <option disabled selected>Select a category</option>
-<option value="Food">Food</option>
-<option value="Transport">Transport</option>
-<option value="IT">IT</option>
-<option value="Health">Health</option>
-<option value="Education">Education</option>
-<option value="Entertainment">Entertainment</option>
-<option value="Finance">Finance</option>
-<option value="Real Estate">Real Estate</option>
-<option value="Hospitality">Hospitality</option>
-<option value="Travel">Travel</option>
-<option value="Fitness">Fitness</option>
-<option value="Beauty & Wellness">Beauty & Wellness</option>
-<option value="Retail">Retail</option>
-<option value="Legal">Legal</option>
-<option value="Home Services">Home Services</option>
-<option value="Automotive">Automotive</option>
-<option value="Technology">Technology</option>
-<option value="Logistics">Logistics</option>
-<option value="Media & Advertising">Media & Advertising</option>
-<option value="Agriculture">Agriculture</option>
-<option value="Construction">Construction</option>
-<option value="Energy & Utilities">Energy & Utilities</option>
-<option value="Public Services">Public Services</option>
-<option value="Non-Profit">Non-Profit</option>
-<option value="Telecommunications">Telecommunications</option>
-<option value="Sports & Recreation">Sports & Recreation</option>
-<option value="Insurance">Insurance</option>
-<option value="E-commerce">E-commerce</option>
-<option value="Event Management">Event Management</option>
-<option value="Pet Care">Pet Care</option>
-<option value="Luxury Services">Luxury Services</option>
+    <label className="label text-lg font-medium">Category</label>
+    <select
+        {...register("category", {
+            required: "Please select a category",
+            validate: (value) => value !== "default" || "Please select a valid category",
+        })}
+        className="select select-bordered w-full rounded-lg px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-white"
+    >
+        <option value="default">Select a category</option>
+        <option value="Food">Food</option>
+        <option value="Transport">Transport</option>
+        <option value="IT">IT</option>
+        <option value="Health">Health</option>
+        <option value="Education">Education</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Finance">Finance</option>
+        <option value="Real Estate">Real Estate</option>
+        <option value="Hospitality">Hospitality</option>
+        <option value="Travel">Travel</option>
+        <option value="Fitness">Fitness</option>
+        <option value="Beauty & Wellness">Beauty & Wellness</option>
+        <option value="Retail">Retail</option>
+        <option value="Legal">Legal</option>
+        <option value="Home Services">Home Services</option>
+        <option value="Automotive">Automotive</option>
+        <option value="Technology">Technology</option>
+        <option value="Logistics">Logistics</option>
+        <option value="Media & Advertising">Media & Advertising</option>
+        <option value="Agriculture">Agriculture</option>
+        <option value="Construction">Construction</option>
+        <option value="Energy & Utilities">Energy & Utilities</option>
+        <option value="Public Services">Public Services</option>
+        <option value="Non-Profit">Non-Profit</option>
+        <option value="Telecommunications">Telecommunications</option>
+        <option value="Sports & Recreation">Sports & Recreation</option>
+        <option value="Insurance">Insurance</option>
+        <option value="E-commerce">E-commerce</option>
+        <option value="Event Management">Event Management</option>
+        <option value="Pet Care">Pet Care</option>
+        <option value="Luxury Services">Luxury Services</option>
+    </select>
+    {errors.category && <p className="text-red-200 text-sm mt-1">{errors.category.message}</p>}
+</div>
 
-                    </select>
-                    {errors.category && <p className="text-red-200 text-sm mt-1">{errors.category.message}</p>}
-                </div>
 
                 <div className="form-control">
                     <label className="label text-lg font-medium">Description</label>

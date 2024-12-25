@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosSecure from "../hook/useAxiosSecure";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
-
 
 const MyServices = () => {
     const axiosSecure = useAxiosSecure();
@@ -14,6 +12,7 @@ const MyServices = () => {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
     const [editService, setEditService] = useState(null);
+    const [deleteConfirmation, setDeleteConfirmation] = useState(null);
 
     useEffect(() => {
         if (user?.email) {
@@ -81,13 +80,14 @@ const MyServices = () => {
         }
     };
 
-    const handleDelete = async (id) => {
+    const handleDelete = async () => {
         try {
-            await axiosSecure.delete(`api/services/${id}`);
+            await axiosSecure.delete(`api/services/${deleteConfirmation._id}`);
             toast.success("Service deleted successfully!");
             setServices((prevServices) =>
-                prevServices.filter((service) => service._id !== id)
+                prevServices.filter((service) => service._id !== deleteConfirmation._id)
             );
+            setDeleteConfirmation(null);
         } catch (error) {
             console.error("Error deleting service:", error);
             toast.error("Failed to delete service.");
@@ -112,7 +112,7 @@ const MyServices = () => {
 
             {loading ? (
                 <div className="flex justify-center">
-                           <span className="loading loading-infinity loading-lg"></span>
+                    <span className="loading loading-infinity loading-lg"></span>
                 </div>
             ) : (
                 <div className="overflow-x-auto bg-white rounded-lg shadow">
@@ -134,7 +134,7 @@ const MyServices = () => {
                                     <tr key={service._id} className="hover:bg-gray-100">
                                         <td className="px-4 py-4">
                                             <img
-                                                src={service.image || "https://via.placeholder.com/64"}
+                                                src={service.image}
                                                 alt={service.title}
                                                 className="w-16 h-16 object-cover rounded-lg"
                                             />
@@ -162,7 +162,7 @@ const MyServices = () => {
                                             </button>
                                             <button
                                                 className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition"
-                                                onClick={() => handleDelete(service._id)}
+                                                onClick={() => setDeleteConfirmation(service)}
                                             >
                                                 Delete
                                             </button>
@@ -178,6 +178,33 @@ const MyServices = () => {
                             )}
                         </tbody>
                     </table>
+                </div>
+            )}
+
+           
+            {deleteConfirmation && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+                        <h3 className="text-lg font-bold text-red-700 mb-4">Confirm Deletion</h3>
+                        <p className="mb-4">
+                            Are you sure you want to delete the service{" "}
+                            <strong>{deleteConfirmation.title}</strong>?
+                        </p>
+                        <div className="flex justify-end">
+                            <button
+                                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                                onClick={handleDelete}
+                            >
+                                Yes, Delete
+                            </button>
+                            <button
+                                className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition ml-2"
+                                onClick={() => setDeleteConfirmation(null)}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
 
@@ -225,7 +252,8 @@ const MyServices = () => {
                     </div>
                 </div>
             )}
-             <Helmet>
+
+            <Helmet>
                 <title>MyServices | Service Review</title>
             </Helmet>
         </div>
