@@ -12,6 +12,7 @@ import MyServices from "../pages/Myservices";
 import CommunityForum from "../pages/CommunityForum";
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import Contact from "../pages/Contact";
 
 
 
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
 {
   path: "/forum",
   element: <CommunityForum></CommunityForum>
+},
+{
+  path: "/contact",
+  element: <Contact></Contact>
 }
    
     ],

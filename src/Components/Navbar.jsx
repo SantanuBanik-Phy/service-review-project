@@ -78,6 +78,18 @@ const Navbar = () => {
                 Community Forum
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-indigo-600 font-bold underline"
+                    : "hover:text-indigo-600"
+                }
+              >
+                Contact
+              </NavLink>
+            </li>
             {user && (
               <>
                 <li>
@@ -167,6 +179,18 @@ const Navbar = () => {
               Community Forum
             </NavLink>
           </li>
+          <li>
+              <NavLink
+               to="/contact"
+               className={({ isActive }) =>
+                 isActive
+                   ? "text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1"
+                   : "hover:text-yellow-300 transition duration-300"
+               }
+              >
+                Contact
+              </NavLink>
+            </li>
           {user && (
             <>
               <li>
