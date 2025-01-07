@@ -1,5 +1,5 @@
 <div align="center">
-  <img height="300" src=""  />
+  <img height="200" src="https://raw.githubusercontent.com/SantanuBanik-Phy/service-review-project/refs/heads/main/src/assets/service-review.png"  />
 </div>
 
 # Service Review System
