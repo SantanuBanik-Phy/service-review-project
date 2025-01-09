@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import google from "../assets/google.png";
@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
 import Lottie from "lottie-react";
-import registerAnimation from "../assets/lottie/register-animation.json"; 
+import registerAnimation from "../assets/lottie/register-animation.json";
 
 const Register = () => {
   const { createUser, googleSignIn, setUser, updateUserProfile } =
@@ -22,26 +22,22 @@ const Register = () => {
     const photo = form.photo.value.trim();
     const password = form.password.value.trim();
 
-    // Name validation
     if (!name) {
       toast.error("Name is required.");
       return;
     }
 
-    // Email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       toast.error("Please provide a valid email address.");
       return;
     }
 
-    // Photo URL validation
     const urlRegex = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
     if (!urlRegex.test(photo)) {
       toast.error("Please provide a valid photo URL starting with http:// or https://");
       return;
     }
 
-    // Password validation
     if (!/(?=.*[A-Z])/.test(password)) {
       toast.error("Password must contain at least one uppercase letter.");
       return;
@@ -65,7 +61,6 @@ const Register = () => {
     } catch (error) {
       console.error(error);
 
-      // Firebase error handling
       if (error.code === "auth/email-already-in-use") {
         toast.error("This email is already in use.");
       } else if (error.code === "auth/invalid-email") {
@@ -90,124 +85,117 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-200 to-indigo-200 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-indigo-200 to-pink-200 flex items-center justify-center px-4">
       <ToastContainer position="top-center" />
       <Helmet>
         <title>Register - Service</title>
       </Helmet>
 
-      <div className="flex my-10 gap-8 flex-col lg:flex-row justify-between items-center w-full max-w-6xl px-6">
-      
-        <div className="w-full lg:w-1/2 bg-white rounded-3xl shadow-2xl p-10">
-          <h1 className="text-5xl font-extrabold text-gray-800 text-center mb-6">
-            Join Us Today!
+      <div className="flex flex-col lg:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-6xl">
+        {/* Lottie Animation Section */}
+        <div className="w-full lg:w-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex justify-center items-center p-8">
+          <Lottie
+            animationData={registerAnimation}
+            loop={true}
+            className="w-full max-w-lg"
+          />
+        </div>
+
+        {/* Form Section */}
+        <div className="w-full lg:w-1/2 p-10">
+          <h1 className="text-4xl font-extrabold text-gray-800 text-center mb-4">
+            Create an Account
           </h1>
-          <p className="text-gray-600 text-center mb-8 text-lg">
-            Create your account and get started with our services.
+          <p className="text-gray-600 text-center mb-8">
+            Start your journey with us today!
           </p>
 
-          <form onSubmit={handleRegister}>
-         
-            <div className="form-control mb-6">
-              <label className="label">
-                <span className="label-text font-medium text-gray-700">Name</span>
+          <form onSubmit={handleRegister} className="space-y-6">
+            {/* Name Field */}
+            <div className="form-group">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Name
               </label>
               <input
                 type="text"
                 name="name"
                 placeholder="Enter your name"
-                className="input input-bordered w-full border-gray-300 focus:ring-2 focus:ring-purple-500 rounded-xl p-4"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-400 shadow-sm"
                 required
               />
             </div>
 
-         
-            <div className="form-control mb-6">
-              <label className="label">
-                <span className="label-text font-medium text-gray-700">Email</span>
+            {/* Email Field */}
+            <div className="form-group">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Email
               </label>
               <input
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className="input input-bordered w-full border-gray-300 focus:ring-2 focus:ring-purple-500 rounded-xl p-4"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-400 shadow-sm"
                 required
               />
             </div>
 
-          
-            <div className="form-control mb-6">
-              <label className="label">
-                <span className="label-text font-medium text-gray-700">
-                  Photo URL
-                </span>
+            {/* Photo URL Field */}
+            <div className="form-group">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Photo URL
               </label>
               <input
                 type="text"
                 name="photo"
                 placeholder="Photo URL"
-                className="input input-bordered w-full border-gray-300 focus:ring-2 focus:ring-purple-500 rounded-xl p-4"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-400 shadow-sm"
                 required
               />
             </div>
 
-         
-            <div className="form-control mb-4">
-              <label className="label">
-                <span className="label-text font-medium text-gray-700">
-                  Password
-                </span>
+            {/* Password Field */}
+            <div className="form-group">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Password
               </label>
               <input
                 type="password"
                 name="password"
                 placeholder="Enter your password"
-                className="input input-bordered w-full border-gray-300 focus:ring-2 focus:ring-purple-500 rounded-xl p-4"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-400 shadow-sm"
                 required
               />
             </div>
 
-           
-            <div className="form-control">
-              <button
-                type="submit"
-                className="btn w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 rounded-xl hover:from-purple-700 hover:to-pink-700"
-              >
-                Register
-              </button>
-            </div>
+            {/* Register Button */}
+            <button
+              type="submit"
+              className="w-full py-3 text-white bg-gradient-to-r from-purple-600 to-indigo-500 rounded-lg shadow-lg font-semibold hover:from-purple-700 hover:to-indigo-600 transition-all duration-300"
+            >
+              Register
+            </button>
           </form>
 
-          <div className="divider my-6">OR</div>
+          <div className="mt-6 text-center text-gray-600">OR</div>
 
-         
+          {/* Google Sign-In */}
           <button
             onClick={handleGoogleSignIn}
-            className="btn btn-outline w-full flex justify-center items-center space-x-3 border-gray-300 hover:bg-gray-100 py-3 rounded-xl"
+            className="mt-4 w-full py-3 flex items-center justify-center bg-gray-100 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-200 transition-all duration-300"
           >
-            <img src={google} className="w-6 h-6" alt="Google logo" />
-            <span>Continue with Google</span>
+            <img src={google} alt="Google" className="w-6 h-6 mr-3" />
+            Sign in with Google
           </button>
 
-          <div className="text-center mt-6">
-            <p className="text-gray-600">
-              Already have an account?{' '}
-              <Link
-                to="/auth/login"
-                className="text-purple-600 font-bold hover:underline"
-              >
-                Log in
-              </Link>
-            </p>
-          </div>
-        </div>
-      
-        <div className="w-full lg:w-1/2 flex justify-center mb-10 lg:mb-0">
-          <Lottie
-            animationData={registerAnimation}
-            loop={true}
-            className="max-w-md lg:max-w-lg"
-          />
+          <p className="mt-6 text-center text-gray-600">
+            Already have an account?{" "}
+            <Link
+              to="/auth/login"
+              className="text-indigo-600 font-bold hover:underline"
+            >
+              Log in
+            </Link>
+          </p>
         </div>
       </div>
     </div>

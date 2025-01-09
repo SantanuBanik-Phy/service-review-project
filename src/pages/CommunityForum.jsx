@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import animationData from '../assets/lottie/lottie-animation.json'; 
+import animationData from '../assets/lottie/Animation.json'; 
 import Lottie from 'lottie-react';
 import { Helmet } from 'react-helmet';
 

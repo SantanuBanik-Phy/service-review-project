@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo  from "../assets/serviceReview.png";
 
 const Footer = () => {
@@ -63,10 +64,10 @@ const Footer = () => {
                     <div className="space-y-6">
                         <h2 className="text-xl font-semibold">Useful Links</h2>
                         <ul className="space-y-4 text-sm">
-                            <li><a href="#" className="hover:text-yellow-400 transition duration-300">Home</a></li>
-                            <li><a href="#about" className="hover:text-yellow-400 transition duration-300">About Us</a></li>
-                            <li><a href="#services" className="hover:text-yellow-400 transition duration-300">Services</a></li>
-                            <li><a href="#contact" className="hover:text-yellow-400 transition duration-300">Contact</a></li>
+                            <li><Link to="/"  className="hover:text-yellow-400 transition duration-300">Home</Link></li>
+                            <li><Link to="/forum"  className="hover:text-yellow-400 transition duration-300">Community forum</Link></li>
+                            <li><Link to="/services"  className="hover:text-yellow-400 transition duration-300">Services</Link></li>
+                            <li><Link to="/contact"  className="hover:text-yellow-400 transition duration-300">Contact</Link></li>
                         </ul>
                     </div>
 
@@ -92,7 +93,7 @@ const Footer = () => {
                     {/* Contact Info */}
                     <div className="space-y-6">
                         <h2 className="text-xl font-semibold">Contact Info</h2>
-                        <ul className="text-sm">
+                        <ul className="text-sm space-y-2">
                             <li className="flex items-center space-x-2">
                                 <i className="fas fa-map-marker-alt text-yellow-400"></i>
                                 <span>203/SouthShadebpur, Feni, Dhaka, Bangladesh</span>

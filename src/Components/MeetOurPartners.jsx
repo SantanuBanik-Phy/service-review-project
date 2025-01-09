@@ -23,11 +23,11 @@ const MeetOurPartners = () => {
             "description": "Innovators in customer relationship management, providing solutions that help businesses gather valuable service feedback through integrated review systems.",
             "logo": "https://i.ibb.co.com/0Bv9DTc/images.png"
         },
-        {
-            "name": "IBM",
-            "description": "Pioneers in AI and machine learning, helping businesses leverage smart algorithms to analyze service reviews and improve customer satisfaction.",
-            "logo": "https://i.ibb.co.com/WfzmBS8/Featured-1-15.jpg"
-        }
+        // {
+        //     "name": "IBM",
+        //     "description": "Pioneers in AI and machine learning, helping businesses leverage smart algorithms to analyze service reviews and improve customer satisfaction.",
+        //     "logo": "https://i.ibb.co.com/WfzmBS8/Featured-1-15.jpg"
+        // }
     ];
 
     const cardVariants = {
