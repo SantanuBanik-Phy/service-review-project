@@ -1,126 +1,104 @@
 <div align="center">
-  <img height="200" src="https://raw.githubusercontent.com/SantanuBanik-Phy/micro-task-client/refs/heads/main/src/assets/micro-task-github.png"  />
+  <img height="200" src="https://raw.githubusercontent.com/SantanuBanik-Phy/service-review-project/refs/heads/main/src/assets/service-review.png"  />
 </div>
 
-# Micro-Tasking Platform
+# Service Review System
 
-A platform where users can complete microtasks to earn rewards or post tasks to get things done. The platform supports various roles such as Workers, Buyers, and Admins with role-based dashboards and secure payments.
 
-## Live Site URL
 
-[https://b10-a12.web.app/](https://b10-a12.web.app/)
+This is a full-stack web application that allows users to review and interact with various services. Users can add services, write reviews, manage their reviews, and explore reviews of services they've added. Built with a focus on user experience and clean design, this platform provides a seamless and intuitive way to navigate and discover services while fostering a vibrant community.
 
-## Admin Credentials
+## Live URL
 
-* **UserEmail:** Santanubkph@bd.com
-* **Password:** Ph1234@
+[https://b10-a11.web.app/](https://b10-a11.web.app/)
 
-## Features
+## Key Features
 
-* **User Authentication:**
-    * Secure registration and login with email/password.
-    * Google authentication for quick and easy signup/login.
-    * Input validation to ensure data integrity.
-* **Role-Based Access:**
-    * Separate dashboards for Workers, Buyers, and Admins with distinct functionalities.
-    * Workers complete tasks, Buyers create tasks, and Admins manage the platform.
-* **Task Management:** 
-    * Buyers can create tasks with detailed descriptions, requirements, and rewards.
-    * Buyers can manage their posted tasks, track progress, and review submissions.
-* **Submission & Review:**
-    * Workers can browse available tasks and submit completed work for review.
-    * Buyers can review submissions, approve or reject them, and provide feedback.
-* **Secure Payments:**
-    * Integrated Stripe payment gateway for secure coin purchases by Buyers.
-    * Buyers can purchase coins to fund their tasks and pay Workers.
-* **Withdrawals:**
-    * Workers can withdraw their earned coins through various payment methods (e.g., Bkash, Rocket, Nagad).
-    * Admin approves withdrawal requests and manages payment processing.
-* **Notifications:**
-    * Real-time notifications for task updates, submission status, payments, and withdrawals.
-    * Users can view their notifications in a dropdown menu.
-* **Responsive Design:**
-    * The website adapts seamlessly to various screen sizes (desktop, tablet, mobile) for optimal user experience.
-* **User-Friendly Interface:**
-    * Intuitive design and clear navigation for easy task management and interaction.
-* **Admin Panel:**
-    * Comprehensive dashboard for Admins to manage users, tasks, submissions, and withdrawals.
-    * Admins can update user roles, delete users, and manage task status.
+*  **User Authentication:** Secure user registration and login with email/password and Google authentication powered by Firebase.
+*  **Service Management:** Effortless addition, modification, and removal of services with detailed information and images.
+*  **Comprehensive Review System:** Write detailed reviews with ratings, facilitating informed decision-making for other users.
+*  **Personalized User Dashboard:** A dedicated space for users to manage their added services and submitted reviews.
+*  **Dynamic Search and Filter:** Easily find services using keywords and refine results by category for a streamlined search experience.
+*  **Interactive Community Forum:** Engage with other users, discuss services, ask questions, and share valuable insights.
+*  **Responsive Design:** Seamlessly adapts to various screen sizes, ensuring optimal usability on all devices.
+*  **Visually Appealing UI:** Designed with a focus on aesthetics and user-friendliness, incorporating smooth animations and transitions.
 
 ## Technologies Used
 
-* **Frontend:**
-    * React: JavaScript library for building user interfaces.
-    * Tailwind CSS: Utility-first CSS framework for rapid UI development.
-    * DaisyUI: Component library built on top of Tailwind CSS.
-    * Headless UI: Unstyled, fully accessible UI components.
-    * React Hook Form: Library for form management and validation.
-    * React Query: Data fetching and state management library.
-    * Axios: Promise-based HTTP client for API requests.
-    * Lottie-React: Animation library for adding interactive animations.
-    * React Router DOM: For routing and navigation.
-    * React Icons: For adding icons to the application.
-* **Backend:**
-    * Node.js: JavaScript runtime environment.
-    * Express.js: Minimalist web framework for Node.js.
-    * MongoDB: NoSQL database for data storage.
-    * JWT (JSON Web Token): For secure authentication and authorization.
-    * Stripe: Payment processing platform.
+*  **Frontend:**
+    *  React: JavaScript library for building user interfaces.
+    *  Tailwind CSS: Utility-first CSS framework for rapid UI development.
+    *  DaisyUI: Component library built on top of Tailwind CSS for pre-designed UI elements.
+    *  Framer Motion: Animation library for creating smooth transitions and interactive elements.
+    *  Axios: Promise-based HTTP client for making API requests.
+    *  Firebase Authentication: Secure authentication service provided by Google.
+*  **Backend:**
+    *  Node.js: JavaScript runtime environment for server-side development.
+    *  Express.js: Minimalist web framework for Node.js.
+    *  MongoDB: NoSQL database for flexible and scalable data storage.
+    *  JWT (JSON Web Token): Industry-standard for secure authentication and authorization.
 
 ## NPM Packages Used
 
-*  `@headlessui/react`: For accessible UI components.
-*  `@stripe/react-stripe-js`: For Stripe integration in React.
-*  `@stripe/stripe-js`: For Stripe JavaScript integration.
-*  `@tanstack/react-query`: For data fetching and state management.
-*  `animate.css`: For adding pre-built animations.
 *  `axios`: For making HTTP requests.
-*  `firebase`: For Firebase authentication.
-*  `localforage`: For offline data storage.
-*  `lottie-react`: For Lottie animations in React.
-*  `match-sorter`: For matching and sorting data efficiently.
-*  `motion`: For adding animations to components.
-*  `react-card-flip`: For flip card animations.
+*  `cors`: For enabling Cross-Origin Resource Sharing.
+*  `daisyui`: For UI components.
+*  `dotenv`: For loading environment variables.
+*  `express`: For building the web server.
+*  `firebase`: For authentication.
+*  `framer-motion`: For animations.
+*  `jsonwebtoken`: For generating JWTs.
+*  `mongodb`: For interacting with MongoDB.
 *  `react-countup`: For animated counters.
-*  `react-dom`: For React DOM rendering.
-*  `react-helmet`: For managing the document head.
-*  `react-helmet-async`: For asynchronous management of the document head.
-*  `react-hook-form`: For form management and validation.
-*  `react-hot-toast`: For toast notifications.
-*  `react-icons`: For incorporating icons in the app.
-*  `react-responsive-carousel`: For creating responsive carousels.
+*  `react-helmet`: For managing document head.
+*  `react-hook-form`: For form management.
+*  `react-photo-view`: For image zoom.
+*  `react-rating`: For star ratings.
 *  `react-router-dom`: For routing and navigation.
-*  `sort-by`: For sorting arrays efficiently.
-*  `swiper`: For creating responsive touch sliders.
+*  `swal2`: For SweetAlert2 modals and notifications.
+*  `toastify`: For toast notifications.
+*  `tailwindcss`: For styling.
 
 ## Installation and Setup
 
-1. Clone the repository: `git clone https://github.com/your-username/micro-tasking-platform.git`
+1. Clone the repository: `git clone https://github.com/your-username/service-review-system.git`
 2. Install dependencies:
-    * Client-side: `cd micro-tasking-client && npm install`
-    * Server-side: `cd micro-tasking-server && npm install`
-3. Set up environment variables: 
+    * Client-side: `cd service-review-client && npm install`
+    * Server-side: `cd service-review-server && npm install`
+3. Set up environment variables:
     * Create `.env` files in both client and server directories.
-    * Add your Firebase config, MongoDB URI, Stripe keys, and other sensitive information.
+    * Add your Firebase config, MongoDB URI, and other sensitive information.
+    * **Client-side (.env)**
+    ```bash
+    REACT_APP_FIREBASE_API_KEY=<Your Firebase API Key>
+    REACT_APP_FIREBASE_AUTH_DOMAIN=<Your Firebase Auth Domain>
+    REACT_APP_FIREBASE_PROJECT_ID=<Your Firebase Project ID>
+    REACT_APP_FIREBASE_STORAGE_BUCKET=<Your Firebase Storage Bucket>
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID=<Your Firebase Messaging Sender ID>
+    REACT_APP_FIREBASE_APP_ID=<Your Firebase App ID>
+    ```
 4. Run the application:
     * Start the development server (client-side): `npm start`
+    * This will start the application in development mode at `http://localhost:3000`.
+5. Backend setup:
+    * Ensure you have MongoDB running locally or use a cloud-based MongoDB service like MongoDB Atlas.
+    * Set up your backend by following the backend-specific instructions in the repository (if applicable).
     * Start the server (server-side): `node index.js`
 
 ## Future Improvements
 
-* Service Categories: Implement service categories for better organization and filtering.
-* Multi-language Support: Add multilingual features to make the platform more inclusive.
-* Analytics Dashboard: Enhance the admin panel with advanced analytics for service and user performance.
-* SEO Optimization: Improve SEO for better discoverability on search engines.
+*  Service Categories: Implement service categories for better organization and filtering.
+*  Rating System: Enhance the rating system by adding detailed feedback options.
+*  User Profiles: Introduce more user profile features for a more personalized experience.
+*  Admin Panel: Create an admin panel for managing services and user reviews.
 
 ## Contributing
 
 Contributions are welcome! Please feel free to open issues or submit pull requests.
 
+
 ## Acknowledgments
 
-* **React:** React is an open-source JavaScript library maintained by Facebook and the community.
-* **Firebase:** Firebase is a platform developed by Google for creating mobile and web applications.
-* **MongoDB:** MongoDB is a NoSQL database that provides high availability and scalability.
-* **Stripe:** Stripe is a powerful and flexible payments platform for online transactions.
-
+*  **React:** React is an open-source JavaScript library maintained by Facebook and the community.
+*  **Firebase:** Firebase is a platform developed by Google for creating mobile and web applications.
+*  **MongoDB:** MongoDB is a NoSQL database that provides high availability and scalability.
