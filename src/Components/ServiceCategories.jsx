@@ -31,10 +31,10 @@ const ServiceCategories = () => {
             transition={{ duration: 0.5 }}
             className="container mx-auto py-16 px-4 md:px-6 lg:px-8"
         >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-8">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-8 dark:text-white">
             Service Categories
             </h2>
-            <p className="text-center text-gray-600 text-lg mb-10">
+            <p className="text-center text-gray-600 text-lg mb-10 dark:text-slate-300">
                 Explore our diverse range of service categories tailored to meet all your needs.
             </p>
             {loading ? (

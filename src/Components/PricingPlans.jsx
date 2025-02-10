@@ -11,7 +11,7 @@ const plans = [
             'Community support'
         ],
         description: "Ideal for those just getting started with a simple service review system.",
-        color: 'bg-blue-100',
+        color: 'bg-blue-100 dark:bg-blue-900',
     },
     {
         name: 'Standard',
@@ -23,7 +23,7 @@ const plans = [
             'Priority support'
         ],
         description: "Perfect for growing businesses looking for more exposure and support.",
-        color: 'bg-yellow-100',
+        color: 'bg-yellow-100 dark:bg-yellow-900',
     },
     {
         name: 'Premium',
@@ -35,7 +35,7 @@ const plans = [
             'Dedicated support'
         ],
         description: "Best for businesses that need full flexibility and priority customer support.",
-        color: 'bg-green-100',
+        color: 'bg-green-100 dark:bg-green-900',
     },
 ];
 
@@ -50,7 +50,7 @@ const PricingPlans = () => {
             <h2 className="text-4xl font-extrabold text-center mb-6 text-gradient bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
                 Pricing Plans for Service Providers
             </h2>
-            <p className="text-center text-lg text-gray-600 mb-12">
+            <p className="text-center text-lg text-gray-600 dark:text-gray-300 mb-12">
                 Choose the plan that fits your needs to start managing your service review system with ease.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -61,10 +61,10 @@ const PricingPlans = () => {
                         className={`card ${plan.color} shadow-xl rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
                     >
                         <div className="card-body text-center py-8">
-                            <h3 className="text-2xl font-semibold text-gray-800">{plan.name}</h3>
-                            <p className="text-4xl font-bold text-gray-900 mb-4">{plan.price}</p>
-                            <p className="text-gray-700 mb-4">{plan.description}</p>
-                            <ul className="list-disc text-gray-600 ml-6 my-4 space-y-2">
+                            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">{plan.name}</h3>
+                            <p className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">{plan.price}</p>
+                            <p className="text-gray-700 dark:text-gray-300 mb-4">{plan.description}</p>
+                            <ul className="list-disc text-gray-600 dark:text-gray-400 ml-6 my-4 space-y-2">
                                 {plan.features.map((feature, i) => (
                                     <li key={i} className="text-left text-sm">{feature}</li>
                                 ))}
