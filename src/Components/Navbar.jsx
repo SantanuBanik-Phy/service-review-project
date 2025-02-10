@@ -1,10 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import "./Navbar.css";
-import logo  from "../assets/serviceReview.png";
+import logo from "../assets/serviceReview.png";
+import { FaMoon, FaSun } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
   const { user, logout } = useContext(AuthContext);
   const [displayName, setDisplayName] = useState(user?.displayName || "");
 
@@ -13,130 +13,61 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <nav className="navbar bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-600 text-white py-3 px-4 lg:px-12 shadow-lg">
+    <nav className="navbar bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-600 text-white py-3 px-4 lg:px-12 shadow-lg dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
       {/* Navbar Start */}
       <div className="navbar-start">
         <div className="dropdown z-50">
-        <label
-  tabIndex={0}
-  className="btn btn-ghost lg:hidden"
-  onClick={(e) => e.stopPropagation()}
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6 text-white"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M4 6h16M4 12h8m-8 6h16"
-    />
-  </svg>
-</label>
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-white dark:text-gray-200"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
 
-<ul
-  tabIndex={0}
-  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white text-gray-800 rounded-box w-52 z-50"
->
+          <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-box w-52">
             <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-indigo-600 font-bold underline"
-                    : "hover:text-indigo-600"
-                }
-              >
+              <NavLink to="/" className="hover:text-indigo-600 dark:hover:text-yellow-400">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/services"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-indigo-600 font-bold underline"
-                    : "hover:text-indigo-600"
-                }
-              >
+              <NavLink to="/services" className="hover:text-indigo-600 dark:hover:text-yellow-400">
                 Services
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/forum"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-indigo-600 font-bold underline"
-                    : "hover:text-indigo-600"
-                }
-              >
+              <NavLink to="/forum" className="hover:text-indigo-600 dark:hover:text-yellow-400">
                 Community Forum
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-indigo-600 font-bold underline"
-                    : "hover:text-indigo-600"
-                }
-              >
+              <NavLink to="/contact" className="hover:text-indigo-600 dark:hover:text-yellow-400">
                 Contact
               </NavLink>
             </li>
-            {user && (
-              <>
-                <li>
-                  <NavLink
-                    to="/add-service"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-indigo-600 font-bold underline"
-                        : "hover:text-indigo-600"
-                    }
-                  >
-                    Add Service
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/my-reviews"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-indigo-600 font-bold underline"
-                        : "hover:text-indigo-600"
-                    }
-                  >
-                    My Reviews
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/my-services"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-indigo-600 font-bold underline"
-                        : "hover:text-indigo-600"
-                    }
-                  >
-                    My Services
-                  </NavLink>
-                </li>
-              </>
-            )}
+            <li>
+              {/* Theme Toggle Button */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300"
+              >
+                {theme === "light" ? <FaMoon className="text-gray-800" /> : <FaSun className="text-yellow-400" />}
+              </button>
+            </li>
           </ul>
         </div>
-        <Link
-          to="/"
-          className=" w-16 h-16 "
-        >
-          <img src={logo} className="w-full h-full rounded-full" alt="" />
+        <Link to="/" className="w-16 h-16">
+          <img src={logo} className="w-full h-full rounded-full" alt="Logo" />
         </Link>
       </div>
 
@@ -144,93 +75,34 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-4">
           <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1"
-                  : "hover:text-yellow-300 transition duration-300"
-              }
-            >
+            <NavLink to="/" className="hover:text-yellow-300 dark:hover:text-yellow-400">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1"
-                  : "hover:text-yellow-300 transition duration-300"
-              }
-            >
+            <NavLink to="/services" className="hover:text-yellow-300 dark:hover:text-yellow-400">
               Services
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/forum"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1"
-                  : "hover:text-yellow-300 transition duration-300"
-              }
-            >
+            <NavLink to="/forum" className="hover:text-yellow-300 dark:hover:text-yellow-400">
               Community Forum
             </NavLink>
           </li>
           <li>
-              <NavLink
-               to="/contact"
-               className={({ isActive }) =>
-                 isActive
-                   ? "text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1"
-                   : "hover:text-yellow-300 transition duration-300"
-               }
-              >
-                Contact
-              </NavLink>
-            </li>
-          {user && (
-            <>
-              <li>
-                <NavLink
-                  to="/add-service"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1"
-                      : "hover:text-yellow-300 transition duration-300"
-                  }
-                >
-                  Add Service
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/my-reviews"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1"
-                      : "hover:text-yellow-300 transition duration-300"
-                  }
-                >
-                  My Reviews
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/my-services"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1"
-                      : "hover:text-yellow-300 transition duration-300"
-                  }
-                >
-                  My Services
-                </NavLink>
-              </li>
-            </>
-          )}
+            <NavLink to="/contact" className="hover:text-yellow-300 dark:hover:text-yellow-400">
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300"
+            >
+              {theme === "light" ? <FaMoon className="text-gray-800" /> : <FaSun className="text-yellow-400" />}
+            </button>
+          </li>
         </ul>
       </div>
 
@@ -255,16 +127,10 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center space-x-4">
-            <Link
-              to="/auth/login"
-              className="btn rounded-full bg-white text-black  font-bold shadow-md"
-            >
+            <Link to="/auth/login" className="btn rounded-full bg-white text-black font-bold shadow-md">
               Login
             </Link>
-            <Link
-              to="/auth/register"
-              className="btn rounded-full bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold shadow-md"
-            >
+            <Link to="/auth/register" className="btn rounded-full bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold shadow-md">
               Register
             </Link>
           </div>
