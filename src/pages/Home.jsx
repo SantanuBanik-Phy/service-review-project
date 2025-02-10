@@ -105,26 +105,31 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
-      <div className="w-full mx-auto bg-cover bg-center dark:bg-gray-800"
-        style={{ backgroundImage: "url('https://i.ibb.co.com/5YxPff1/abstruct.png')" }}>
-        <section className="w-11/12 mx-auto">
-          <MeetOurPartners />
-        </section>
-      </div>
+     {/* Partners Section */}
+<div 
+  className="w-full mx-auto bg-background/95  backdrop-blur supports-[backdrop-filter]:bg-background/60 bg-[url('https://i.ibb.co.com/5YxPff1/abstruct.png')] dark:bg-[url('https://i.ibb.co.com/different-bg-for-dark.png')] dark:bg-gray-900 dark:text-white bg-cover bg-center bg-no-repeat"
+  
+>
+  <section className="w-11/12 mx-auto">
+    <MeetOurPartners />
+  </section>
+</div>
 
-      {/* Service Categories Section */}
-      <section className="w-11/12 mx-auto py-8">
-        <ServiceCategories />
-      </section>
+{/* Service Categories Section */}
+<section className="w-11/12 mx-auto py-8">
+  <ServiceCategories />
+</section>
 
-      {/* Pricing Plans Section */}
-      <div className="w-full mx-auto bg-cover bg-center dark:bg-gray-900"
-        style={{ backgroundImage: "url('https://i.ibb.co.com/vBNkmK7/rb-66456.png')" }}>
-        <section className="w-11/12 mx-auto py-8">
-          <PricingPlans />
-        </section>
-      </div>
+{/* Pricing Plans Section */}
+<div 
+  className="w-full mx-auto bg-background/95  backdrop-blur supports-[backdrop-filter]:bg-background/60 bg-[url('https://i.ibb.co.com/vBNkmK7/rb-66456.png')] dark:bg-[url('https://i.ibb.co.com/different-bg-for-dark.png')] dark:bg-gray-900 dark:text-white bg-cover bg-center bg-no-repeat "
+
+>
+  <section className="w-11/12 mx-auto py-8">
+    <PricingPlans />
+  </section>
+</div>
+
     </div>
   );
 };

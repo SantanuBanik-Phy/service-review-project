@@ -55,7 +55,7 @@ const HomeLayout = () => {
        
       <div className='min-h-[calc(100vh-100px)] '>
         {/* Dynamic Section */}
-        <Outlet />
+        <Outlet  theme={theme} />
       </div>
       {/* Footer */}
       <Footer></Footer>

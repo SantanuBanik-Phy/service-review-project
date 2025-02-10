@@ -25,9 +25,9 @@ const faqs = [
     },
 ];
 
-const CommunityForum = () => {
+const CommunityForum = ({ theme }) => {
     const [activeFaq, setActiveFaq] = useState(null);
-
+    
     const toggleFaq = (index) => {
         setActiveFaq(activeFaq === index ? null : index);
     };
@@ -37,24 +37,22 @@ const CommunityForum = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="container mx-auto py-10"
+            className={`${theme === 'dark' ? 'dark' : ''} px-12 py-10 dark:bg-gray-900`}
         >
-            <h2 className="text-4xl font-extrabold text-center mb-6 text-gradient bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+            <Helmet>
+                <title>Community Forum | Service Review</title>
+            </Helmet>
+
+            <h2 className="text-4xl font-extrabold text-center mb-6 text-gradient bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text dark:text-white">
                 Community Forum: Engage, Share, and Learn
             </h2>
-            <p className="text-lg text-center mb-8 text-gray-600">
+            <p className="text-lg text-center mb-8 text-gray-600 dark:text-gray-300">
                 Connect with other users, share experiences, discuss services, and help one another find the best service providers.
             </p>
 
             {/* Lottie Animation */}
             <div className="flex justify-center mb-10">
-                <Lottie
-                    animationData={animationData} 
-                    loop={true}
-                    autoplay={true}
-                    height={200}
-                    width={200}
-                />
+                <Lottie animationData={animationData} loop autoplay height={200} width={200} />
             </div>
 
             {/* Forum Categories */}
@@ -69,10 +67,15 @@ const CommunityForum = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             whileHover={{ scale: 1.05 }}
                         >
-                            <Link to={`/community/${category}`} className="card bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform rounded-lg">
+                            <Link
+                                to={`/community/${category}`}
+                                className="card bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 transform rounded-lg"
+                            >
                                 <div className="card-body text-center py-8 px-6">
-                                    <h3 className="text-2xl font-semibold text-indigo-600">{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
-                                    <p className="text-gray-600 mt-2">
+                                    <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400">
+                                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                                    </h3>
+                                    <p className="text-gray-600 dark:text-gray-300 mt-2">
                                         {category === 'general' && 'Discuss anything related to finding and reviewing services in your area.'}
                                         {category === 'recommendations' && 'Share or request recommendations for specific service providers.'}
                                         {category === 'issues' && 'Report problems with services or suggest ways to improve them.'}
@@ -86,7 +89,9 @@ const CommunityForum = () => {
             </div>
 
             {/* FAQs */}
-            <h3 className="text-2xl font-semibold text-center mb-4 text-gray-800">Frequently Asked Questions</h3>
+            <h3 className="text-2xl font-semibold text-center mb-4 text-gray-800 dark:text-white">
+                Frequently Asked Questions
+            </h3>
             <div className="space-y-4">
                 {faqs.map((faq, index) => (
                     <motion.div
@@ -94,14 +99,14 @@ const CommunityForum = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="card bg-white shadow-xl rounded-lg overflow-hidden"
+                        className="card bg-white dark:bg-gray-800 shadow-xl rounded-lg overflow-hidden"
                     >
                         <div
-                            className="collapse collapse-arrow border border-base-300"
+                            className="collapse collapse-arrow border border-base-300 dark:border-gray-700"
                             onClick={() => toggleFaq(index)}
                         >
                             <input type="radio" name="my-accordion-2" />
-                            <div className="collapse-title text-xl font-medium text-gray-700 hover:text-indigo-600 cursor-pointer">
+                            <div className="collapse-title text-xl font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer">
                                 {faq.question}
                             </div>
                             {activeFaq === index && (
@@ -110,18 +115,14 @@ const CommunityForum = () => {
                                     animate={{ opacity: 1, height: 'auto' }}
                                     exit={{ opacity: 0, height: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className="collapse-content text-gray-600"
+                                    className="collapse-content text-gray-600 dark:text-gray-300"
                                 >
                                     <p>{faq.answer}</p>
                                 </motion.div>
                             )}
                         </div>
                     </motion.div>
-                    
                 ))}
-                 <Helmet>
-                <title>CommunityForum | Service Review</title>
-            </Helmet>
             </div>
         </motion.div>
     );
