@@ -40,7 +40,7 @@ const Services = ({ theme }) => {
   }
 
   return (
-    <div className={`px-12  dark:bg-gray-900 ${theme === 'dark' ? 'dark' : ''}`}>
+    <div className={`lg:px-12   dark:bg-gray-900 ${theme === 'dark' ? 'dark' : ''}`}>
       <Helmet>
         <title>Services - All Services</title>
       </Helmet>
