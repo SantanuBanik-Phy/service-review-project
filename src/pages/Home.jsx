@@ -79,32 +79,47 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-indigo-100 to-purple-50 dark:from-gray-800 dark:to-gray-700">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-10">
-            Our Stats
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-            {[
-              { title: "Users", count: platformStats.users, color: "purple", icon: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" },
-              { title: "Reviews", count: platformStats.reviews, color: "green", icon: "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" },
-              { title: "Services", count: platformStats.servicesCount, color: "blue", icon: "M20 6h-3.17l-1.84-3.14c-.37-.63-1.03-.86-1.64-.86H10c-.61 0-1.27.23-1.64.86L6.52 6H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 2c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4z" },
-            ].map((stat, index) => (
-              <div key={index} className="p-8 bg-white dark:bg-gray-800 shadow-md rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
-                <div className="flex justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className={`w-12 h-12 text-${stat.color}-500`} viewBox="0 0 24 24">
-                    <path d={stat.icon} />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-200">{stat.title}</h3>
-                <p className={`text-4xl font-bold text-${stat.color}-600 dark:text-${stat.color}-400 mt-2`}>
-                  <CountUp start={0} end={stat.count} duration={2} />
-                </p>
-              </div>
-            ))}
+     <section className="py-20 bg-gradient-to-r from-indigo-200 to-purple-100 dark:from-gray-800 dark:to-gray-700">
+  <div className="w-11/12 mx-auto">
+    <h2 className="md:text-5xl text-3xl font-extrabold text-center text-gray-900 dark:text-white mb-14">
+      Our Impact in Numbers
+    </h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center">
+      {[
+        { title: "Users", count: platformStats.users, color: "purple", icon: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" },
+        { title: "Reviews", count: platformStats.reviews, color: "green", icon: "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" },
+        { title: "Services", count: platformStats.servicesCount, color: "blue", icon: "M20 6h-3.17l-1.84-3.14c-.37-.63-1.03-.86-1.64-.86H10c-.61 0-1.27.23-1.64.86L6.52 6H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 2c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4z" },
+      ].map((stat, index) => (
+        <div 
+          key={index} 
+          className="p-10 bg-white dark:bg-gray-800 bg-opacity-90 dark:bg-opacity-75 rounded-2xl shadow-2xl backdrop-blur-md transition-transform transform hover:scale-105 hover:shadow-2xl relative overflow-hidden"
+        >
+          {/* Glow Effect */}
+          <div className={`absolute inset-0 bg-${stat.color}-500 opacity-10 blur-3xl`}></div>
+          
+          <div className="flex justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className={`w-16 h-16 text-${stat.color}-600 dark:text-${stat.color}-400`} viewBox="0 0 24 24">
+              <path d={stat.icon} />
+            </svg>
           </div>
+          
+          <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+            {stat.title}
+          </h3>
+
+          <p className={`text-5xl font-bold text-${stat.color}-600 dark:text-${stat.color}-400 mt-4`}>
+            <CountUp start={0} end={stat.count} duration={2.5} />
+          </p>
+
+          {/* Floating Animation */}
+          <div className="absolute w-20 h-20 bg-opacity-20 rounded-full bg-gray-300 dark:bg-gray-600 top-4 left-10 animate-pulse"></div>
+          <div className="absolute w-12 h-12 bg-opacity-20 rounded-full bg-gray-300 dark:bg-gray-600 bottom-6 right-10 animate-bounce"></div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
      {/* Partners Section */}
 <div 
