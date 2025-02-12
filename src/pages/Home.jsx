@@ -8,6 +8,7 @@ import MeetOurPartners from "../Components/MeetOurPartners";
 import ServiceCategories from "../Components/ServiceCategories";
 import PricingPlans from "../Components/PricingPlans";
 import { Helmet } from "react-helmet";
+import HowItWorks from "../Components/HowItWorks";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -119,6 +120,9 @@ const Home = () => {
 <section className="w-11/12 mx-auto py-8">
   <ServiceCategories />
 </section>
+<section className="w-11/12 mx-auto py-8">
+    <HowItWorks />
+  </section>
 
 {/* Pricing Plans Section */}
 <div 
